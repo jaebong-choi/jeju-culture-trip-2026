@@ -48,9 +48,24 @@ nav.bar .wrap{display:flex;align-items:center;gap:8px}
 .links{display:flex;overflow-x:auto;flex:1;min-width:0}
 .links a{padding:12px 10px;text-decoration:none;color:var(--fg);white-space:nowrap;font-size:.92rem}
 .links a:hover{color:var(--red)}
-.tools{display:flex;gap:6px;flex-shrink:0}
-.tools button{font:inherit;font-size:.82rem;color:var(--fg);background:none;border:1px solid var(--line);border-radius:4px;padding:4px 9px;cursor:pointer}
-.tools button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tools{display:flex;align-items:center;gap:10px;flex-shrink:0}
+/* Same toggles as Study Guide Hub: KO|EN pill and a moon/sun switch */
+.lang-switch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang-switch button{font:inherit;font-size:11.5px;font-weight:700;letter-spacing:.02em;border:0;background:transparent;color:var(--muted);padding:6px 11px;cursor:pointer}
+.lang-switch button:hover{color:var(--fg)}
+.lang-switch button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.theme-switch{display:inline-flex;align-items:center;gap:8px;padding:0;border:0;background:none;color:var(--fg);cursor:pointer;font:inherit}
+.switch-track{position:relative;display:block;width:52px;height:28px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+.theme-switch:hover .switch-track{border-color:var(--fg)}
+.switch-knob{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--fg);z-index:1;transform:translateX(24px);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+.theme-switch[aria-checked="true"] .switch-knob{transform:none}
+.switch-icon{position:absolute;top:50%;margin-top:-7px;z-index:2;color:var(--muted);pointer-events:none;transition:color .25s ease}
+.switch-icon.icon-moon{left:6px}
+.switch-icon.icon-sun{right:6px;color:var(--bg)}
+.theme-switch[aria-checked="true"] .icon-moon{color:var(--bg)}
+.theme-switch[aria-checked="true"] .icon-sun{color:var(--muted)}
+.switch-label{font-size:12px;font-weight:600;color:var(--muted);min-width:40px;text-align:left;white-space:nowrap}
+@media (max-width:520px){.switch-label{display:none}.tools{gap:8px}}
 
 section{padding-block:44px 4px}
 h2{font-size:1.6rem;font-weight:700;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:18px}
@@ -67,7 +82,7 @@ h2 .date{font-size:1rem;font-weight:500;color:var(--red);font-variant-numeric:ta
 .place p{margin:.3em 0 0}
 .geo{font-size:.85rem;color:var(--blue);font-weight:500;margin-top:6px}
 .cap{font-size:.8rem;color:var(--muted);margin-top:4px}
-.meal{color:var(--muted)}
+.meal{color:var(--muted);display:flex;flex-wrap:wrap;align-items:center;column-gap:6px}
 .meal b{color:var(--fg);font-weight:500}
 @media (max-width:600px){
   .day > li{grid-template-columns:1fr;gap:4px}
@@ -196,6 +211,34 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
 .work:hover .play.big{transform:scale(1.1)}
 .event{background:var(--glass);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:12px;padding:16px 18px}
 .event b{color:var(--red);font-weight:500}
+
+/* Meal names open a photo card */
+.dish{font:inherit;color:var(--fg);font-weight:500;background:none;border:0;border-bottom:1px dashed var(--muted);padding:0 0 1px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:color .2s ease,border-color .2s ease}
+.dish img{width:28px;height:28px;border-radius:50%;object-fit:cover;flex:none}
+.dish:hover{color:var(--red);border-color:var(--red)}
+dialog.food{border:0;border-radius:16px;padding:0;width:min(440px,calc(100vw - 32px));background:var(--bg);color:var(--fg);box-shadow:var(--shadow);overflow:hidden}
+dialog.food::backdrop{background:rgba(10,15,18,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+dialog.food > img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+dialog.food .in{padding:14px 20px 18px}
+dialog.food h3{font-size:1.2rem}
+dialog.food p{margin:.4em 0 .6em;font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:.75rem;padding:2px 9px;border-radius:99px;background:var(--band);color:var(--muted)}
+dialog.food .credit{font-size:.72rem;color:var(--muted);margin-top:10px}
+dialog.food .x{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:1.3rem;line-height:1;cursor:pointer}
+@media (prefers-reduced-motion: no-preference){dialog.food[open]{animation:rise .35s var(--ease)}}
+
+/* SNS event */
+.steps{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.steps li{background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.steps .no{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;font-weight:700;font-size:.9rem;margin-bottom:6px}
+.steps h3{font-size:1.05rem}
+.steps p{margin:.3em 0 0;font-size:.93rem}
+.tagbox{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px;color:var(--red);font-weight:500}
+.copy{font:inherit;font-size:.8rem;color:var(--fg);background:none;border:1px solid var(--line);border-radius:4px;padding:2px 10px;cursor:pointer}
+.copy.ok::after{content:" ✓"}
+.sub{font-size:1.05rem;margin-bottom:2px}
+.rules{color:var(--muted);font-size:.9rem;margin:20px 0 0;padding-left:18px}
 </style>
 
 <header class="hero">
@@ -228,11 +271,19 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <a href="#videos"><span lang="ko">영상</span><span lang="en">Videos</span></a>
       <a href="#screen"><span lang="ko">드라마·음악</span><span lang="en">Screen &amp; song</span></a>
       <a href="#tips"><span lang="ko">준비물·연락처</span><span lang="en">Tips</span></a>
+      <a href="#event"><span lang="ko">SNS 이벤트</span><span lang="en">SNS event</span></a>
     </div>
     <div class="tools">
-      <button type="button" id="lang-ko" data-set-lang="ko">한국어</button>
-      <button type="button" id="lang-en" data-set-lang="en">EN</button>
-      <button type="button" id="theme-btn"></button>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" id="lang-ko" data-set-lang="ko">KO</button>
+        <button type="button" id="lang-en" data-set-lang="en">EN</button>
+      </div>
+      <button type="button" id="theme-btn" class="theme-switch" role="switch">
+        <span class="switch-track" aria-hidden="true"><span class="switch-knob"></span>
+          <svg class="switch-icon icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+          <svg class="switch-icon icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+        <span class="switch-label"></span>
+      </button>
     </div>
   </div>
 </nav>
@@ -281,7 +332,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
   <ol class="day">
     <li><time>07:00</time><div><span lang="ko">쉐턱관 앞 집결, 버스로 대구공항 이동</span><span lang="en">Meet in front of Shattuck Hall (쉐턱관), bus to Daegu Airport</span></div></li>
     <li><time>08:55</time><div><span lang="ko">대구공항 출발 → 10:05 제주공항 도착</span><span lang="en">Depart Daegu → arrive Jeju 10:05</span></div></li>
-    <li><time>10:30</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">흑돼지두루치기</span><span lang="en">Stir-fried black pork (흑돼지두루치기)</span></div></li>
+    <li><time>10:30</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <button type="button" class="dish" data-meal="m-duruchigi"><img src="img/meal-duruchigi.webp" alt=""><span lang="ko">흑돼지두루치기</span><span lang="en">Stir-fried black pork (흑돼지두루치기)</span></button></div></li>
     <li class="place" id="p-geumneung"><time>11:30</time><div class="body"><img src="img/geumneung.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">금능으뜸해변</span><span lang="en">Geumneung Beach</span><small lang="ko">Geumneung Beach</small><small lang="en">금능으뜸해변</small></h3>
       <p lang="ko">모래가 희고 물이 얕은 해변입니다. 바다 건너로 비양도가 보입니다.</p>
@@ -299,7 +350,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <p lang="ko">약 1만 8천 년 전 화산 폭발로 쌓인 화산재 지층이 절벽에 그대로 드러나 있습니다.</p>
       <p lang="en">The cliffs show layers of volcanic ash from an eruption about 18,000 years ago.</p>
       <div class="geo"><span lang="ko">유네스코 세계지질공원</span><span lang="en">UNESCO Global Geopark</span></div><a class="map" href="https://map.naver.com/p/search/%EC%88%98%EC%9B%94%EB%B4%89" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li><time>18:00</time><div class="meal"><b><span lang="ko">저녁</span><span lang="en">Dinner</span></b> · <span lang="ko">샤브샤브, 월남쌈</span><span lang="en">Shabu-shabu and rice-paper wraps</span> · <span lang="ko">19:30 숙소 도착</span><span lang="en">hotel by 19:30</span></div></li>
+    <li><time>18:00</time><div class="meal"><b><span lang="ko">저녁</span><span lang="en">Dinner</span></b> · <button type="button" class="dish" data-meal="m-wolnamssam"><img src="img/meal-wolnamssam.webp" alt=""><span lang="ko">샤브샤브, 월남쌈</span><span lang="en">Shabu-shabu and rice-paper wraps</span></button> ·<span lang="ko">19:30 숙소 도착</span><span lang="en">hotel by 19:30</span></div></li>
   </ol>
 </section>
 
@@ -316,7 +367,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <p lang="ko">썰물 때 검은 용암 바위와 초록 이끼가 드러납니다. 정면에 성산일출봉이 보입니다.</p>
       <p lang="en">At low tide, black lava rock and green moss appear. Seongsan Ilchulbong stands right in front.</p>
       <div class="geo"><span lang="ko">성산일출봉: 유네스코 세계자연유산</span><span lang="en">Seongsan Ilchulbong: UNESCO World Natural Heritage</span></div><a class="map" href="https://map.naver.com/p/search/%EA%B4%91%EC%B9%98%EA%B8%B0%ED%95%B4%EB%B3%80" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li><time>13:00</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">갈치조림</span><span lang="en">Braised cutlassfish (갈치조림)</span></div></li>
+    <li><time>13:00</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <button type="button" class="dish" data-meal="m-galchi"><img src="img/meal-galchi.webp" alt=""><span lang="ko">갈치조림</span><span lang="en">Braised cutlassfish (갈치조림)</span></button></div></li>
     <li class="place" id="p-ilchulland"><time>14:00</time><div class="body"><img src="img/ilchulland.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">일출랜드</span><span lang="en">Ilchul Land</span><small lang="ko">Ilchul Land</small><small lang="en">일출랜드</small></h3>
       <p lang="ko">용암동굴인 미천굴을 중심으로 꾸민 정원입니다. 동굴 안을 직접 걸어볼 수 있습니다.</p>
@@ -326,7 +377,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <p lang="ko">서귀포에서 가장 큰 전통시장입니다. 길거리 음식, 감귤 간식, 기념품을 살 수 있습니다.</p>
       <p lang="en">Seogwipo's largest traditional market. Street food, tangerine snacks and souvenirs.</p>
       <div class="cap"><span lang="ko">사진: 시장 바로 옆 이중섭거리</span><span lang="en">Photo: Lee Jung-seob Street, next to the market</span></div><a class="map" href="https://map.naver.com/p/search/%EC%84%9C%EA%B7%80%ED%8F%AC%EB%A7%A4%EC%9D%BC%EC%98%AC%EB%A0%88%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li><time>18:00</time><div class="meal"><b><span lang="ko">저녁</span><span lang="en">Dinner</span></b> · <span lang="ko">흑돼지구이</span><span lang="en">Grilled black pork (흑돼지구이)</span></div></li>
+    <li><time>18:00</time><div class="meal"><b><span lang="ko">저녁</span><span lang="en">Dinner</span></b> · <button type="button" class="dish" data-meal="m-blackpork"><img src="img/meal-blackpork.webp" alt=""><span lang="ko">흑돼지구이</span><span lang="en">Grilled black pork (흑돼지구이)</span></button></div></li>
   </ol>
 </section>
 
@@ -344,7 +395,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <p lang="ko">산방산 아래, 용의 머리를 닮은 사암 절벽입니다. 물때와 파도에 따라 입장이 통제될 수 있습니다.</p>
       <p lang="en">Sandstone cliffs below Sanbangsan, shaped like a dragon's head. Entry depends on the tide and waves.</p>
       <div class="geo"><span lang="ko">유네스코 세계지질공원</span><span lang="en">UNESCO Global Geopark</span></div><a class="map" href="https://map.naver.com/p/search/%EC%9A%A9%EB%A8%B8%EB%A6%AC%ED%95%B4%EC%95%88" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li><time>13:00</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">보말칼국수, 수육</span><span lang="en">Sea-snail noodle soup and boiled pork</span></div></li>
+    <li><time>13:00</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <button type="button" class="dish" data-meal="m-bomal"><img src="img/meal-bomal.webp" alt=""><span lang="ko">보말칼국수, 수육</span><span lang="en">Sea-snail noodle soup and boiled pork</span></button></div></li>
     <li><time>16:30</time><div><span lang="ko">제주공항 도착, 탑승 수속</span><span lang="en">Check in at Jeju Airport</span></div></li>
     <li><time>17:40</time><div><span lang="ko">제주공항 출발 → 18:50 대구공항 도착</span><span lang="en">Depart Jeju → arrive Daegu 18:50</span></div></li>
     <li><time>19:50</time><div><span lang="ko">쉐턱관 도착 후 해산</span><span lang="en">Arrive at Shattuck Hall, trip ends</span></div></li>
@@ -421,9 +472,6 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
 <section id="tips">
   <h2><span lang="ko">준비물과 연락처</span><span lang="en">Packing and contacts</span></h2>
   <div class="tips">
-    <div class="event"><h3><span lang="ko">SNS 사진 이벤트</span><span lang="en">SNS photo event</span></h3>
-      <ul lang="ko"><li>여행 중 찍은 사진과 후기를 개인 SNS에 올려 주세요 (혼자 또는 팀)</li><li>필수 해시태그: <b>#계명문화대학교 #제주도문화탐방</b></li><li>유학생지원팀이 확인해 우수 10팀에게 선물을 드립니다</li></ul>
-      <ul lang="en"><li>Post your trip photos and a short review on your own SNS, alone or as a team</li><li>Required hashtags: <b>#계명문화대학교 #제주도문화탐방</b></li><li>The International Student Support Team picks the best 10 teams for a gift</li></ul></div>
     <div><h3><span lang="ko">날씨·준비물</span><span lang="en">Weather and packing</span></h3>
       <ul lang="ko"><li>11월 말 기온 8–16°C, 해안은 바람이 강함</li><li>바람막이 되는 따뜻한 겉옷, 모자</li><li>미끄럽지 않은 운동화 (바위 해안, 오름)</li><li>신분증 (여권 또는 외국인등록증)</li><li>보조배터리, 작은 우산</li></ul>
       <ul lang="en"><li>Late November: 8–16°C, strong wind on the coast</li><li>Warm windproof jacket and a hat</li><li>Shoes with good grip (rocky coast, hill walk)</li><li>ID for the flight: passport or ARC</li><li>Power bank and a small umbrella</li></ul></div>
@@ -437,8 +485,66 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
   </div>
 </section>
 
+<section id="event" class="band">
+  <h2><span lang="ko">SNS 사진 이벤트</span><span lang="en">SNS photo event</span></h2>
+  <p class="lead" lang="ko">여행 중 찍은 사진과 짧은 후기를 개인 SNS에 올려 주세요. 혼자 해도 되고 팀으로 해도 됩니다. 유학생지원팀이 올라온 게시물을 보고 우수 10팀에게 선물을 드립니다.</p>
+  <p class="lead" lang="en">Post your trip photos and a short review on your own SNS, alone or as a team. The International Student Support Team will pick the best 10 teams for a gift.</p>
+  <ol class="steps">
+    <li><span class="no">1</span><h3><span lang="ko">찍기</span><span lang="en">Shoot</span></h3>
+      <p lang="ko">아래 장면을 참고해서 마음에 드는 순간을 담아 주세요. 친구와 함께 찍은 사진도 좋습니다.</p>
+      <p lang="en">Use the ideas below or catch your own moment. Photos with friends are welcome.</p></li>
+    <li><span class="no">2</span><h3><span lang="ko">올리기</span><span lang="en">Post</span></h3>
+      <p lang="ko">사진과 짧은 후기에 해시태그 두 개를 꼭 붙여 주세요.</p>
+      <p lang="en">Add a short review and both hashtags.</p>
+      <div class="tagbox"><span>#계명문화대학교 #제주도문화탐방</span><button type="button" class="copy" data-copy="#계명문화대학교 #제주도문화탐방"><span lang="ko">복사</span><span lang="en">Copy</span></button></div></li>
+    <li><span class="no">3</span><h3><span lang="ko">선정</span><span lang="en">Winners</span></h3>
+      <p lang="ko">유학생지원팀이 해시태그로 게시물을 찾아 우수 10팀을 고릅니다. 비공개 계정은 볼 수 없으니 게시물을 공개로 올려 주세요.</p>
+      <p lang="en">The team finds posts by hashtag and picks the best 10. Private accounts can't be seen, so make the post public.</p></li>
+  </ol>
+  <h3 class="sub"><span lang="ko">이런 장면은 어때요</span><span lang="en">Photo ideas</span></h3>
+  <div class="tiles">
+    <a class="tile" href="#p-gwangchigi"><img src="img/gwangchigi.webp" alt="" loading="lazy"><span class="t"><span lang="ko">광치기해변 · 검은 바위 너머 성산일출봉</span><span lang="en">Gwangchigi · Seongsan Ilchulbong behind the black rocks</span></span></a>
+    <a class="tile" href="#p-sinchang"><img src="img/sinchang.webp" alt="" loading="lazy"><span class="t"><span lang="ko">신창풍차해안도로 · 바다 위 하얀 풍차</span><span lang="en">Sinchang · White windmills over the sea</span></span></a>
+    <a class="tile" href="#p-yongnuni"><img src="img/yongnuni.webp" alt="" loading="lazy"><span class="t"><span lang="ko">용눈이오름 · 능선을 걷는 뒷모습</span><span lang="en">Yongnuni · Walking along the ridge</span></span></a>
+    <a class="tile" href="#p-hueree"><img src="img/hueree.webp" alt="" loading="lazy"><span class="t"><span lang="ko">휴애리 · 귤 따는 손을 가까이서</span><span lang="en">Hueree · Close-up of picking tangerines</span></span></a>
+  </div>
+  <ul class="rules" lang="ko"><li>다른 사람 얼굴이 크게 나오면 올리기 전에 꼭 물어봐 주세요.</li><li>사진 때문에 탐방로나 출입 금지 구역 밖으로 나가지 마세요.</li></ul>
+  <ul class="rules" lang="en"><li>Ask before posting a photo where someone else's face is clearly visible.</li><li>Don't leave the trail or enter closed areas for a photo.</li></ul>
+</section>
+
 </main>
-<footer class="wrap"><img src="img/kmcu-signature.png" alt="계명문화대학교 Keimyung College University"><img class="dark" src="img/kmcu-signature-dark.png" alt="계명문화대학교 Keimyung College University"><div><span lang="ko">사진·영상 출처:</span><span lang="en">Photos and videos:</span> <a href="https://www.visitjeju.net" target="_blank" rel="noopener">Visit Jeju</a>, <a href="https://ijto.or.kr/korean/" target="_blank" rel="noopener"><span lang="ko">제주관광공사</span><span lang="en">Jeju Tourism Organization</span></a> · <span lang="ko">계명문화대학교 국제처 (유학생지원팀 · 국제협력지원팀)</span><span lang="en">Keimyung College University, Office of International Affairs</span></div></footer>
+
+<dialog class="food" id="m-duruchigi"><form method="dialog"><button class="x" aria-label="Close">×</button></form><img src="img/meal-duruchigi.webp" alt=""><div class="in">
+  <h3><span lang="ko">흑돼지두루치기</span><span lang="en">Stir-fried black pork</span></h3>
+  <p lang="ko">제주 흑돼지를 고추장 양념에 버무려 콩나물, 파, 양파와 함께 식탁 위 철판에서 볶아 먹는 제주식 요리입니다.</p>
+  <p lang="en">Jeju black pork in red chili paste, stir-fried on a hot pan at the table with bean sprouts, green onion and onion.</p>
+  <div class="chips"><span lang="ko">돼지고기</span><span lang="en">Pork</span><span lang="ko">조금 매움</span><span lang="en">A little spicy</span></div>
+  <div class="credit"><span lang="ko">사진:</span><span lang="en">Photo:</span> <a href="https://commons.wikimedia.org/wiki/File:Pork_duruchigi.jpg" target="_blank" rel="noopener">Sadopaul</a>, CC BY-SA 4.0</div></div></dialog>
+<dialog class="food" id="m-wolnamssam"><form method="dialog"><button class="x" aria-label="Close">×</button></form><img src="img/meal-wolnamssam.webp" alt=""><div class="in">
+  <h3><span lang="ko">샤브샤브와 월남쌈</span><span lang="en">Shabu-shabu and rice-paper wraps</span></h3>
+  <p lang="ko">끓는 육수에 얇게 썬 고기와 채소를 살짝 익혀 먹습니다. 따뜻한 물에 적신 라이스페이퍼에 익힌 고기와 채소를 싸서 소스에 찍어 먹으면 월남쌈이 됩니다.</p>
+  <p lang="en">Thin slices of meat and vegetables are cooked briefly in hot broth. Soften rice paper in warm water, wrap the meat and vegetables, and dip in sauce.</p>
+  <div class="chips"><span lang="ko">맵지 않음</span><span lang="en">Not spicy</span><span lang="ko">직접 싸 먹기</span><span lang="en">Wrap your own</span></div>
+  <div class="credit"><span lang="ko">사진(월남쌈):</span><span lang="en">Photo (wraps):</span> <a href="https://commons.wikimedia.org/wiki/File:G%E1%BB%8Fi_cu%E1%BB%91n.jpg" target="_blank" rel="noopener">Tran Hai Duong</a>, CC0</div></div></dialog>
+<dialog class="food" id="m-galchi"><form method="dialog"><button class="x" aria-label="Close">×</button></form><img src="img/meal-galchi.webp" alt=""><div class="in">
+  <h3><span lang="ko">갈치조림</span><span lang="en">Braised cutlassfish</span></h3>
+  <p lang="ko">갈치를 무, 감자와 함께 매콤한 양념에 졸인 요리입니다. 제주는 은빛이 도는 은갈치로 유명합니다. 잔가시가 많으니 천천히 발라 드세요.</p>
+  <p lang="en">Cutlassfish braised with radish and potato in a spicy sauce. Jeju is known for its silver cutlassfish. It has many small bones, so take your time.</p>
+  <div class="chips"><span lang="ko">생선</span><span lang="en">Fish</span><span lang="ko">조금 매움</span><span lang="en">A little spicy</span></div>
+  <div class="credit"><span lang="ko">사진:</span><span lang="en">Photo:</span> <a href="https://commons.wikimedia.org/wiki/File:Glass_fish_with_potatoe_at_Jeju.jpg" target="_blank" rel="noopener">ProjectManhattan</a>, CC BY-SA 3.0</div></div></dialog>
+<dialog class="food" id="m-blackpork"><form method="dialog"><button class="x" aria-label="Close">×</button></form><img src="img/meal-blackpork.webp" alt=""><div class="in">
+  <h3><span lang="ko">흑돼지구이</span><span lang="en">Grilled black pork</span></h3>
+  <p lang="ko">털이 검은 제주 토종 돼지를 두툼하게 썰어 숯불에 구워 먹습니다. 멸치젓(제주말로 멜젓)에 찍어 먹는 게 제주식입니다.</p>
+  <p lang="en">Thick cuts of Jeju's native black pig, grilled over charcoal. The Jeju way is to dip it in mel-jeot, a salty anchovy sauce.</p>
+  <div class="chips"><span lang="ko">돼지고기</span><span lang="en">Pork</span><span lang="ko">맵지 않음</span><span lang="en">Not spicy</span></div>
+  <div class="credit"><span lang="ko">사진:</span><span lang="en">Photo:</span> <a href="https://commons.wikimedia.org/wiki/File:Korean_BBQ.jpg" target="_blank" rel="noopener">eommina</a>, CC0</div></div></dialog>
+<dialog class="food" id="m-bomal"><form method="dialog"><button class="x" aria-label="Close">×</button></form><img src="img/meal-bomal.webp" alt=""><div class="in">
+  <h3><span lang="ko">보말칼국수와 수육</span><span lang="en">Sea-snail noodle soup and boiled pork</span></h3>
+  <p lang="ko">보말은 제주 바닷가 바위에 붙어 사는 작은 고둥입니다. 보말을 넣고 끓여 국물이 초록빛을 띠는 칼국수입니다. 수육은 돼지고기를 삶아 얇게 썬 것입니다.</p>
+  <p lang="en">Bomal are small sea snails that live on Jeju's coastal rocks, and they turn the noodle soup green. Suyuk is boiled pork, thinly sliced.</p>
+  <div class="chips"><span lang="ko">해산물</span><span lang="en">Seafood</span><span lang="ko">돼지고기(수육)</span><span lang="en">Pork (suyuk)</span></div>
+  <div class="credit"><span lang="ko">사진:</span><span lang="en">Photo:</span> <a href="https://commons.wikimedia.org/wiki/File:%EB%B3%B4%EB%A7%90%EC%B9%BC%EA%B5%AD%EC%88%98.jpg" target="_blank" rel="noopener">Yujinbaek</a>, CC BY-SA 4.0</div></div></dialog>
+<footer class="wrap"><img src="img/kmcu-signature.png" alt="계명문화대학교 Keimyung College University"><img class="dark" src="img/kmcu-signature-dark.png" alt="계명문화대학교 Keimyung College University"><div><span lang="ko">사진·영상 출처:</span><span lang="en">Photos and videos:</span> <a href="https://www.visitjeju.net" target="_blank" rel="noopener">Visit Jeju</a>, <a href="https://ijto.or.kr/korean/" target="_blank" rel="noopener"><span lang="ko">제주관광공사</span><span lang="en">Jeju Tourism Organization</span></a>, <span lang="ko">음식 사진은 Wikimedia Commons (각 사진에 표기)</span><span lang="en">food photos from Wikimedia Commons (credited on each)</span> ·<span lang="ko">계명문화대학교 국제처 (유학생지원팀 · 국제협력지원팀)</span><span lang="en">Keimyung College University, Office of International Affairs</span></div></footer>
 
 <script>
 const root = document.documentElement;
@@ -449,7 +555,9 @@ const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchM
 
 function paintThemeBtn() {
   const ko = root.dataset.lang === 'ko';
-  themeBtn.textContent = isDark() ? (ko ? '라이트 모드' : 'Light') : (ko ? '다크 모드' : 'Dark');
+  themeBtn.setAttribute('aria-checked', isDark());
+  themeBtn.setAttribute('aria-label', ko ? '다크 모드' : 'Dark mode');
+  themeBtn.querySelector('.switch-label').textContent = isDark() ? (ko ? '다크' : 'Dark') : (ko ? '라이트' : 'Light');
 }
 function setLang(l) {
   root.dataset.lang = l; root.lang = l; save('lang', l);
@@ -494,6 +602,13 @@ document.addEventListener('click', ev => {
   setTimeout(() => li.classList.remove('flash'), 1600);
 });
 
+// Meal names open their photo card; tapping outside closes it
+document.querySelectorAll('[data-meal]').forEach(b => b.onclick = () => document.getElementById(b.dataset.meal).showModal());
+document.querySelectorAll('dialog').forEach(d => d.onclick = e => { if (e.target === d) d.close() });
+document.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => navigator.clipboard.writeText(b.dataset.copy).then(() => {
+  b.classList.add('ok'); setTimeout(() => b.classList.remove('ok'), 1500);
+}));
+
 // Content that scrolls into view rises in. Everything is visible without this.
 if (matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
   const ease = 'cubic-bezier(.2,.7,.2,1)';
@@ -509,7 +624,7 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Intersecti
         { duration: 520, delay: Math.min(n++ * 60, 360), easing: ease, fill: 'backwards' });
     });
   }, { rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('main h2, .lead, .about > div, .more, .legend, .mapbox, .tile, .day > li, .notice, .videos a, .work, .tips > div')
+  document.querySelectorAll('main h2, .lead, .about > div, .more, .legend, .mapbox, .tile, .day > li, .notice, .videos a, .work, .tips > div, .steps > li')
     .forEach(el => io.observe(el));
 
   // Pins drop onto the map the first time it is seen
