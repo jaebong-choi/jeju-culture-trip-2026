@@ -8,7 +8,7 @@
 <body>
 <title>Jeju Culture Trip 2026</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Jua&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Jua&family=Nanum+Pen+Script&display=swap">
 <style>
 /* Layout: photo hero, a flight strip, then the itinerary as a time | content table per day */
 :root{
@@ -32,7 +32,7 @@ a{color:var(--blue)}
 :focus-visible{outline:3px solid var(--red);outline-offset:2px}
 
 .hero{position:relative;overflow:hidden;background:var(--basalt);color:#fff}
-.hero::before{content:"";position:absolute;inset:0;background:url(img/hero.webp) center 60%/cover}
+.hero::before{content:"";position:absolute;inset:0;background:url(img/hero-oreum.webp) center 55%/cover}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.05) 20%,rgba(0,0,0,.6))}
 .hero .wrap{position:relative;z-index:1;padding-block:clamp(96px,18vw,180px) 64px}
 .hero .org{font-size:.9rem;opacity:.9}
@@ -163,12 +163,29 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
 }
 @keyframes settle{from{transform:scale(1.07)}to{transform:none}}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.hand{font:clamp(3.4rem,11vw,6.2rem)/1 "Nanum Pen Script", cursive;color:#ffe2b8;margin:10px 0 0;rotate:-3deg;transform-origin:left bottom;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.hand-note{margin:2px 0 10px;font-size:.88rem;opacity:.85}
+.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.work{position:relative;padding:20px 20px 18px;border-radius:14px;background:var(--glass);border:1px solid var(--line);overflow:hidden;transition:transform .25s var(--ease)}
+.work::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:var(--tone)}
+.work:hover{transform:translateY(-4px)}
+.work-title{font:2.1rem/1.1 "Nanum Pen Script", cursive;color:var(--tone);margin-top:4px}
+:root[data-theme="dark"] .work-title{filter:brightness(1.5)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .work-title{filter:brightness(1.5)}}
+.work-alt{display:block;color:var(--muted);font-size:.8rem}
+.work-meta{font-size:.82rem;font-weight:500;margin:8px 0 6px}
+.work p{margin:0 0 10px;font-size:.93rem}
+.work a{font-size:.88rem}
+@media (prefers-reduced-motion: no-preference){.hero .hand{animation:rise .8s .12s var(--ease) both}.hero .hand-note{animation:rise .7s .2s var(--ease) both}}
 </style>
 
 <header class="hero">
   <div class="wrap">
     <img class="seal" src="img/kmcu-symbol.png" alt="계명문화대학교 Keimyung College University">
     <div class="org"><span lang="ko">계명문화대학교 · 아세안 TVET 학생교류사업</span><span lang="en">Keimyung College University · ASEAN TVET Student Exchange</span></div>
+    <p class="hand">혼저 옵서예!</p>
+    <p class="hand-note"><span lang="ko">제주말로 “어서 오세요”라는 뜻이에요</span><span lang="en">Jeju dialect for “Welcome”</span></p>
     <h1><span lang="ko">제주 문화탐방</span><span lang="en">Jeju Culture Trip</span></h1>
   </div>
 </header>
@@ -191,6 +208,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <a href="#day2"><span lang="ko">2일차</span><span lang="en">Day 2</span></a>
       <a href="#day3"><span lang="ko">3일차</span><span lang="en">Day 3</span></a>
       <a href="#videos"><span lang="ko">영상</span><span lang="en">Videos</span></a>
+      <a href="#screen"><span lang="ko">드라마·영화</span><span lang="en">On screen</span></a>
       <a href="#tips"><span lang="ko">준비물·연락처</span><span lang="en">Tips</span></a>
     </div>
     <div class="tools">
@@ -325,6 +343,49 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
   </div>
 </section>
 
+<section id="screen">
+  <h2><span lang="ko">제주가 나오는 드라마·영화</span><span lang="en">Jeju on screen</span></h2>
+  <p class="lead" lang="ko">떠나기 전에 한 편 보면 제주가 더 가깝게 느껴질 거예요.</p>
+  <p class="lead" lang="en">Watch one before the trip and Jeju will feel familiar when you arrive.</p>
+  <div class="works">
+    <article class="work" style="--tone:#ec7d0c">
+      <h3 class="work-title"><span lang="ko">폭싹 속았수다</span><span lang="en">When Life Gives You Tangerines</span></h3>
+      <small class="work-alt"><span lang="ko">When Life Gives You Tangerines</span><span lang="en">폭싹 속았수다</span></small>
+      <div class="work-meta"><span lang="ko">2025 · 넷플릭스 시리즈</span><span lang="en">2025 · Netflix series</span></div>
+      <p lang="ko">1950년대 제주에서 태어난 애순과 관식의 일생을 그린 드라마. 제목은 제주말로 “정말 수고 많으셨습니다”라는 뜻입니다.</p><p lang="en">The life story of Ae-sun and Gwan-sik, born in 1950s Jeju. The title is Jeju dialect for “You worked so hard.”</p>
+      <a href="https://ko.wikipedia.org/wiki/%ED%8F%AD%EC%8B%B9_%EC%86%8D%EC%95%98%EC%88%98%EB%8B%A4" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/When_Life_Gives_You_Tangerines" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+    </article>
+    <article class="work" style="--tone:#1d6f8a">
+      <h3 class="work-title"><span lang="ko">우리들의 블루스</span><span lang="en">Our Blues</span></h3>
+      <small class="work-alt"><span lang="ko">Our Blues</span><span lang="en">우리들의 블루스</span></small>
+      <div class="work-meta"><span lang="ko">2022 · tvN 드라마, 넷플릭스</span><span lang="en">2022 · tvN drama, Netflix</span></div>
+      <p lang="ko">제주 바닷가 마을 사람들의 이야기가 이어지는 옴니버스 드라마. 해녀와 오일장 장면이 자주 나옵니다.</p><p lang="en">Linked stories of people in a Jeju seaside town, with haenyeo divers and the five-day market.</p>
+      <a href="https://ko.wikipedia.org/wiki/%EC%9A%B0%EB%A6%AC%EB%93%A4%EC%9D%98_%EB%B8%94%EB%A3%A8%EC%8A%A4" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/Our_Blues" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+    </article>
+    <article class="work" style="--tone:#4f8f4a">
+      <h3 class="work-title"><span lang="ko">웰컴투 삼달리</span><span lang="en">Welcome to Samdal-ri</span></h3>
+      <small class="work-alt"><span lang="ko">Welcome to Samdal-ri</span><span lang="en">웰컴투 삼달리</span></small>
+      <div class="work-meta"><span lang="ko">2023 · JTBC 드라마, 넷플릭스</span><span lang="en">2023 · JTBC drama, Netflix</span></div>
+      <p lang="ko">서울에서 지친 사진작가가 고향 제주 삼달리로 돌아오는 이야기. 2일차에 가는 일출랜드가 있는 성산읍 마을이 배경입니다.</p><p lang="en">A tired photographer returns home to Samdal-ri, a village in Seongsan near Ilchul Land (Day 2).</p>
+      <a href="https://ko.wikipedia.org/wiki/%EC%9B%B0%EC%BB%B4%ED%88%AC_%EC%82%BC%EB%8B%AC%EB%A6%AC" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/Welcome_to_Samdal-ri" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+    </article>
+    <article class="work" style="--tone:#b5546b">
+      <h3 class="work-title"><span lang="ko">건축학개론</span><span lang="en">Architecture 101</span></h3>
+      <small class="work-alt"><span lang="ko">Architecture 101</span><span lang="en">건축학개론</span></small>
+      <div class="work-meta"><span lang="ko">2012 · 영화</span><span lang="en">2012 · film</span></div>
+      <p lang="ko">한국의 대표 첫사랑 영화. 서귀포 위미리 바닷가의 “서연의 집”은 지금 카페가 되었습니다.</p><p lang="en">A classic Korean first-love film. Seo-yeon’s seaside house in Wimi, Seogwipo, is now a café.</p>
+      <a href="https://ko.wikipedia.org/wiki/%EA%B1%B4%EC%B6%95%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/Architecture_101" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+    </article>
+    <article class="work" style="--tone:#4a4f55">
+      <h3 class="work-title"><span lang="ko">지슬</span><span lang="en">Jiseul</span></h3>
+      <small class="work-alt"><span lang="ko">Jiseul</span><span lang="en">지슬</span></small>
+      <div class="work-meta"><span lang="ko">2013 · 영화</span><span lang="en">2013 · film</span></div>
+      <p lang="ko">제주 4·3 사건 때 동굴로 피신한 마을 사람들을 흑백 화면으로 담았습니다. 2013년 선댄스 영화제 심사위원대상 수상작.</p><p lang="en">A black-and-white film about villagers hiding in caves during the Jeju April 3rd Incident. Grand Jury Prize, Sundance 2013.</p>
+      <a href="https://ko.wikipedia.org/wiki/%EC%A7%80%EC%8A%AC%3A_%EB%81%9D%EB%82%98%EC%A7%80_%EC%95%8A%EC%9D%80_%EC%84%B8%EC%9B%94_2" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/Jiseul" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+    </article>
+  </div>
+</section>
+
 <section id="tips">
   <h2><span lang="ko">준비물과 연락처</span><span lang="en">Packing and contacts</span></h2>
   <div class="tips">
@@ -414,7 +475,7 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Intersecti
         { duration: 520, delay: Math.min(n++ * 60, 360), easing: ease, fill: 'backwards' });
     });
   }, { rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('main h2, .lead, .about > div, .more, .legend, .mapbox, .tile, .day > li, .notice, .videos a, .tips > div')
+  document.querySelectorAll('main h2, .lead, .about > div, .more, .legend, .mapbox, .tile, .day > li, .notice, .videos a, .work, .tips > div')
     .forEach(el => io.observe(el));
 
   // Pins drop onto the map the first time it is seen
