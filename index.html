@@ -184,6 +184,16 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
 .trailer:hover .play{transform:scale(1.12)}
 .trailer:hover b{color:var(--tone)}
 @media (prefers-reduced-motion: no-preference){.hero .hand{animation:rise .8s .12s var(--ease) both}.hero .hand-note{animation:rise .7s .2s var(--ease) both}}
+
+.work{padding-top:0}
+.work::before{z-index:2}
+.work-img{display:block;position:relative;margin:0 -20px 14px;aspect-ratio:16/9;overflow:hidden;background:var(--basalt)}
+.work-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+.work-img::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.35))}
+.work:hover .work-img img{transform:scale(1.05)}
+.play.big{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;z-index:1;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.play.big::after{left:20px;top:15px;border-left-width:16px;border-top-width:11px;border-bottom-width:11px}
+.work:hover .play.big{transform:scale(1.1)}
 </style>
 
 <header class="hero">
@@ -214,7 +224,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <a href="#day2"><span lang="ko">2일차</span><span lang="en">Day 2</span></a>
       <a href="#day3"><span lang="ko">3일차</span><span lang="en">Day 3</span></a>
       <a href="#videos"><span lang="ko">영상</span><span lang="en">Videos</span></a>
-      <a href="#screen"><span lang="ko">드라마·영화</span><span lang="en">On screen</span></a>
+      <a href="#screen"><span lang="ko">드라마·음악</span><span lang="en">Screen &amp; song</span></a>
       <a href="#tips"><span lang="ko">준비물·연락처</span><span lang="en">Tips</span></a>
     </div>
     <div class="tools">
@@ -350,11 +360,12 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
 </section>
 
 <section id="screen">
-  <h2><span lang="ko">제주가 나오는 드라마·영화</span><span lang="en">Jeju on screen</span></h2>
-  <p class="lead" lang="ko">떠나기 전에 한 편 보면 제주가 더 가깝게 느껴질 거예요.</p>
-  <p class="lead" lang="en">Watch one before the trip and Jeju will feel familiar when you arrive.</p>
+  <h2><span lang="ko">제주가 나오는 드라마·영화·음악</span><span lang="en">Jeju on screen and in song</span></h2>
+  <p class="lead" lang="ko">떠나기 전에 한 편 보고, 버스에서 노래 한 곡 들으면 제주가 더 가깝게 느껴질 거예요.</p>
+  <p class="lead" lang="en">Watch one before the trip and play the song on the bus. Jeju will feel familiar when you arrive.</p>
   <div class="works">
     <article class="work" style="--tone:#ec7d0c">
+      <a class="work-img" href="https://www.youtube.com/watch?v=hYqE_mlPeHc" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="img/w-hYqE_mlPeHc.jpg" alt="" loading="lazy"><span class="play big"></span></a>
       <h3 class="work-title"><span lang="ko">폭싹 속았수다</span><span lang="en">When Life Gives You Tangerines</span></h3>
       <small class="work-alt"><span lang="ko">When Life Gives You Tangerines</span><span lang="en">폭싹 속았수다</span></small>
       <div class="work-meta"><span lang="ko">2025 · 넷플릭스 시리즈</span><span lang="en">2025 · Netflix series</span></div>
@@ -362,6 +373,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <a class="trailer" href="https://www.youtube.com/watch?v=hYqE_mlPeHc" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">공식 예고편 보기</span><span lang="en">Watch official trailer</span></b><em>YouTube · Netflix Korea</em></span></a>
     </article>
     <article class="work" style="--tone:#1d6f8a">
+      <a class="work-img" href="https://www.youtube.com/watch?v=pTvt_2W2CWI" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="img/w-pTvt_2W2CWI.jpg" alt="" loading="lazy"><span class="play big"></span></a>
       <h3 class="work-title"><span lang="ko">우리들의 블루스</span><span lang="en">Our Blues</span></h3>
       <small class="work-alt"><span lang="ko">Our Blues</span><span lang="en">우리들의 블루스</span></small>
       <div class="work-meta"><span lang="ko">2022 · tvN 드라마, 넷플릭스</span><span lang="en">2022 · tvN drama, Netflix</span></div>
@@ -369,6 +381,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <a class="trailer" href="https://www.youtube.com/watch?v=pTvt_2W2CWI" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">공식 예고편 보기</span><span lang="en">Watch official trailer</span></b><em>YouTube · tvN DRAMA</em></span></a>
     </article>
     <article class="work" style="--tone:#4f8f4a">
+      <a class="work-img" href="https://www.youtube.com/watch?v=NTCbkrhpnlI" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="img/w-NTCbkrhpnlI.jpg" alt="" loading="lazy"><span class="play big"></span></a>
       <h3 class="work-title"><span lang="ko">웰컴투 삼달리</span><span lang="en">Welcome to Samdal-ri</span></h3>
       <small class="work-alt"><span lang="ko">Welcome to Samdal-ri</span><span lang="en">웰컴투 삼달리</span></small>
       <div class="work-meta"><span lang="ko">2023 · JTBC 드라마, 넷플릭스</span><span lang="en">2023 · JTBC drama, Netflix</span></div>
@@ -376,6 +389,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <a class="trailer" href="https://www.youtube.com/watch?v=NTCbkrhpnlI" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">공식 티저 보기</span><span lang="en">Watch official teaser</span></b><em>YouTube · JTBC Drama</em></span></a>
     </article>
     <article class="work" style="--tone:#b5546b">
+      <a class="work-img" href="https://www.youtube.com/watch?v=0o-qaLxQz0c" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="img/w-0o-qaLxQz0c.jpg" alt="" loading="lazy"><span class="play big"></span></a>
       <h3 class="work-title"><span lang="ko">건축학개론</span><span lang="en">Architecture 101</span></h3>
       <small class="work-alt"><span lang="ko">Architecture 101</span><span lang="en">건축학개론</span></small>
       <div class="work-meta"><span lang="ko">2012 · 영화</span><span lang="en">2012 · film</span></div>
@@ -383,11 +397,21 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <a class="trailer" href="https://www.youtube.com/watch?v=0o-qaLxQz0c" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">메인 예고편 보기</span><span lang="en">Watch main trailer</span></b><em>YouTube · 명필름 Myung Films</em></span></a>
     </article>
     <article class="work" style="--tone:#4a4f55">
+      <a class="work-img" href="https://www.youtube.com/watch?v=6I9qorM1ym4" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="img/w-6I9qorM1ym4.jpg" alt="" loading="lazy"><span class="play big"></span></a>
       <h3 class="work-title"><span lang="ko">지슬</span><span lang="en">Jiseul</span></h3>
       <small class="work-alt"><span lang="ko">Jiseul</span><span lang="en">지슬</span></small>
       <div class="work-meta"><span lang="ko">2013 · 영화</span><span lang="en">2013 · film</span></div>
       <p lang="ko">제주 4·3 사건 때 동굴로 피신한 마을 사람들을 흑백 화면으로 담았습니다. 2013년 선댄스 영화제 심사위원대상 수상작.</p><p lang="en">A black-and-white film about villagers hiding in caves during the Jeju April 3rd Incident. Grand Jury Prize, Sundance 2013.</p>
       <a class="trailer" href="https://www.youtube.com/watch?v=6I9qorM1ym4" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">공식 예고편 보기</span><span lang="en">Watch official trailer</span></b><em>YouTube · 인디스토리 Indiestory</em></span></a>
+    </article>
+    <article class="work" style="--tone:#2b5aa8">
+      <a class="work-img" href="https://www.youtube.com/watch?v=1peUB4mkiwY" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="img/w-1peUB4mkiwY.jpg" alt="" loading="lazy"><span class="play big"></span></a>
+      <h3 class="work-title">제주도의 푸른 밤</h3>
+      <small class="work-alt"><span lang="ko">Blue Night of Jeju Island · 최성원</span><span lang="en">Blue Night of Jeju Island · Choi Sung-won</span></small>
+      <div class="work-meta"><span lang="ko">1988 · 노래</span><span lang="en">1988 · song</span></div>
+      <p lang="ko">들국화의 최성원이 1988년에 발표한 노래. 지금도 제주 여행 하면 가장 먼저 떠오르는 곡으로 꼽힙니다.</p>
+      <p lang="en">A 1988 song by Choi Sung-won of the band Deulgukhwa. Many Koreans still think of it first when they plan a trip to Jeju.</p>
+      <a class="trailer" href="https://www.youtube.com/watch?v=1peUB4mkiwY" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">노래 듣기</span><span lang="en">Listen</span></b><em>YouTube · 최성원 - Topic</em></span></a>
     </article>
   </div>
 </section>
