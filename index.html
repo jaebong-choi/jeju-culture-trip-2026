@@ -237,6 +237,9 @@ dialog.food .x{position:absolute;top:10px;right:10px;width:36px;height:36px;bord
 .tagbox{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px;color:var(--red);font-weight:500}
 .copy{font:inherit;font-size:.8rem;color:var(--fg);background:none;border:1px solid var(--line);border-radius:4px;padding:2px 10px;cursor:pointer}
 .copy.ok::after{content:" ✓"}
+.tagbox > span{user-select:all}
+:root[data-lang="ko"] .copy.manual::after{content:" · 선택됨, 직접 복사해 주세요"}
+:root[data-lang="en"] .copy.manual::after{content:" · Selected, copy it yourself"}
 .sub{font-size:1.05rem;margin-bottom:2px}
 .rules{color:var(--muted);font-size:.9rem;margin:20px 0 0;padding-left:18px}
 </style>
@@ -544,7 +547,7 @@ dialog.food .x{position:absolute;top:10px;right:10px;width:36px;height:36px;bord
   <p lang="en">Bomal are small sea snails that live on Jeju's coastal rocks, and they turn the noodle soup green. Suyuk is boiled pork, thinly sliced.</p>
   <div class="chips"><span lang="ko">해산물</span><span lang="en">Seafood</span><span lang="ko">돼지고기(수육)</span><span lang="en">Pork (suyuk)</span></div>
   <div class="credit"><span lang="ko">사진:</span><span lang="en">Photo:</span> <a href="https://commons.wikimedia.org/wiki/File:%EB%B3%B4%EB%A7%90%EC%B9%BC%EA%B5%AD%EC%88%98.jpg" target="_blank" rel="noopener">Yujinbaek</a>, CC BY-SA 4.0</div></div></dialog>
-<footer class="wrap"><img src="img/kmcu-signature.png" alt="계명문화대학교 Keimyung College University"><img class="dark" src="img/kmcu-signature-dark.png" alt="계명문화대학교 Keimyung College University"><div><span lang="ko">사진·영상 출처:</span><span lang="en">Photos and videos:</span> <a href="https://www.visitjeju.net" target="_blank" rel="noopener">Visit Jeju</a>, <a href="https://ijto.or.kr/korean/" target="_blank" rel="noopener"><span lang="ko">제주관광공사</span><span lang="en">Jeju Tourism Organization</span></a>, <span lang="ko">음식 사진은 Wikimedia Commons (각 사진에 표기)</span><span lang="en">food photos from Wikimedia Commons (credited on each)</span> ·<span lang="ko">계명문화대학교 국제처 (유학생지원팀 · 국제협력지원팀)</span><span lang="en">Keimyung College University, Office of International Affairs</span></div></footer>
+<footer class="wrap"><img src="img/kmcu-signature.png" alt="계명문화대학교 Keimyung College University"><img class="dark" src="img/kmcu-signature-dark.png" alt="계명문화대학교 Keimyung College University"><div><span lang="ko">사진·영상 출처:</span><span lang="en">Photos and videos:</span> <a href="https://www.visitjeju.net" target="_blank" rel="noopener">Visit Jeju</a>, <a href="https://ijto.or.kr/korean/" target="_blank" rel="noopener"><span lang="ko">제주관광공사</span><span lang="en">Jeju Tourism Organization</span></a>, <span lang="ko">음식 사진은 Wikimedia Commons (각 사진에 표기)</span><span lang="en">food photos from Wikimedia Commons (credited on each)</span> · <span lang="ko">계명문화대학교 국제처 (유학생지원팀 · 국제협력지원팀)</span><span lang="en">Keimyung College University, Office of International Affairs</span></div></footer>
 
 <script>
 const root = document.documentElement;
@@ -605,9 +608,16 @@ document.addEventListener('click', ev => {
 // Meal names open their photo card; tapping outside closes it
 document.querySelectorAll('[data-meal]').forEach(b => b.onclick = () => document.getElementById(b.dataset.meal).showModal());
 document.querySelectorAll('dialog').forEach(d => d.onclick = e => { if (e.target === d) d.close() });
-document.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => navigator.clipboard.writeText(b.dataset.copy).then(() => {
-  b.classList.add('ok'); setTimeout(() => b.classList.remove('ok'), 1500);
-}));
+document.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => {
+  const done = () => { b.classList.add('ok'); setTimeout(() => b.classList.remove('ok'), 1500); };
+  // Copy can be blocked (some in-app browsers): select the tags so people can copy them by hand
+  const pick = () => {
+    const r = document.createRange(); r.selectNodeContents(b.previousElementSibling);
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    b.classList.add('manual'); setTimeout(() => b.classList.remove('manual'), 3500);
+  };
+  try { navigator.clipboard.writeText(b.dataset.copy).then(done, pick); } catch (e) { pick(); }
+});
 
 // Content that scrolls into view rises in. Everything is visible without this.
 if (matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
