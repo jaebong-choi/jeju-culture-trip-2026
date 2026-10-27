@@ -176,7 +176,13 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
 .work-alt{display:block;color:var(--muted);font-size:.8rem}
 .work-meta{font-size:.82rem;font-weight:500;margin:8px 0 6px}
 .work p{margin:0 0 10px;font-size:.93rem}
-.work a{font-size:.88rem}
+.trailer{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg);font-size:.9rem;margin-top:4px}
+.trailer b{display:block;font-weight:500}
+.trailer em{display:block;font-style:normal;font-size:.78rem;color:var(--muted)}
+.play{flex:none;width:34px;height:34px;border-radius:50%;background:var(--tone);position:relative;transition:transform .2s var(--ease)}
+.play::after{content:"";position:absolute;left:13px;top:10px;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.trailer:hover .play{transform:scale(1.12)}
+.trailer:hover b{color:var(--tone)}
 @media (prefers-reduced-motion: no-preference){.hero .hand{animation:rise .8s .12s var(--ease) both}.hero .hand-note{animation:rise .7s .2s var(--ease) both}}
 </style>
 
@@ -353,35 +359,35 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <small class="work-alt"><span lang="ko">When Life Gives You Tangerines</span><span lang="en">폭싹 속았수다</span></small>
       <div class="work-meta"><span lang="ko">2025 · 넷플릭스 시리즈</span><span lang="en">2025 · Netflix series</span></div>
       <p lang="ko">1950년대 제주에서 태어난 애순과 관식의 일생을 그린 드라마. 제목은 제주말로 “정말 수고 많으셨습니다”라는 뜻입니다.</p><p lang="en">The life story of Ae-sun and Gwan-sik, born in 1950s Jeju. The title is Jeju dialect for “You worked so hard.”</p>
-      <a href="https://ko.wikipedia.org/wiki/%ED%8F%AD%EC%8B%B9_%EC%86%8D%EC%95%98%EC%88%98%EB%8B%A4" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/When_Life_Gives_You_Tangerines" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+      <a class="trailer" href="https://www.youtube.com/watch?v=hYqE_mlPeHc" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">공식 예고편 보기</span><span lang="en">Watch official trailer</span></b><em>YouTube · Netflix Korea</em></span></a>
     </article>
     <article class="work" style="--tone:#1d6f8a">
       <h3 class="work-title"><span lang="ko">우리들의 블루스</span><span lang="en">Our Blues</span></h3>
       <small class="work-alt"><span lang="ko">Our Blues</span><span lang="en">우리들의 블루스</span></small>
       <div class="work-meta"><span lang="ko">2022 · tvN 드라마, 넷플릭스</span><span lang="en">2022 · tvN drama, Netflix</span></div>
       <p lang="ko">제주 바닷가 마을 사람들의 이야기가 이어지는 옴니버스 드라마. 해녀와 오일장 장면이 자주 나옵니다.</p><p lang="en">Linked stories of people in a Jeju seaside town, with haenyeo divers and the five-day market.</p>
-      <a href="https://ko.wikipedia.org/wiki/%EC%9A%B0%EB%A6%AC%EB%93%A4%EC%9D%98_%EB%B8%94%EB%A3%A8%EC%8A%A4" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/Our_Blues" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+      <a class="trailer" href="https://www.youtube.com/watch?v=pTvt_2W2CWI" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">공식 예고편 보기</span><span lang="en">Watch official trailer</span></b><em>YouTube · tvN DRAMA</em></span></a>
     </article>
     <article class="work" style="--tone:#4f8f4a">
       <h3 class="work-title"><span lang="ko">웰컴투 삼달리</span><span lang="en">Welcome to Samdal-ri</span></h3>
       <small class="work-alt"><span lang="ko">Welcome to Samdal-ri</span><span lang="en">웰컴투 삼달리</span></small>
       <div class="work-meta"><span lang="ko">2023 · JTBC 드라마, 넷플릭스</span><span lang="en">2023 · JTBC drama, Netflix</span></div>
       <p lang="ko">서울에서 지친 사진작가가 고향 제주 삼달리로 돌아오는 이야기. 2일차에 가는 일출랜드가 있는 성산읍 마을이 배경입니다.</p><p lang="en">A tired photographer returns home to Samdal-ri, a village in Seongsan near Ilchul Land (Day 2).</p>
-      <a href="https://ko.wikipedia.org/wiki/%EC%9B%B0%EC%BB%B4%ED%88%AC_%EC%82%BC%EB%8B%AC%EB%A6%AC" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/Welcome_to_Samdal-ri" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+      <a class="trailer" href="https://www.youtube.com/watch?v=NTCbkrhpnlI" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">공식 티저 보기</span><span lang="en">Watch official teaser</span></b><em>YouTube · JTBC Drama</em></span></a>
     </article>
     <article class="work" style="--tone:#b5546b">
       <h3 class="work-title"><span lang="ko">건축학개론</span><span lang="en">Architecture 101</span></h3>
       <small class="work-alt"><span lang="ko">Architecture 101</span><span lang="en">건축학개론</span></small>
       <div class="work-meta"><span lang="ko">2012 · 영화</span><span lang="en">2012 · film</span></div>
       <p lang="ko">한국의 대표 첫사랑 영화. 서귀포 위미리 바닷가의 “서연의 집”은 지금 카페가 되었습니다.</p><p lang="en">A classic Korean first-love film. Seo-yeon’s seaside house in Wimi, Seogwipo, is now a café.</p>
-      <a href="https://ko.wikipedia.org/wiki/%EA%B1%B4%EC%B6%95%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/Architecture_101" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+      <a class="trailer" href="https://www.youtube.com/watch?v=0o-qaLxQz0c" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">메인 예고편 보기</span><span lang="en">Watch main trailer</span></b><em>YouTube · 명필름 Myung Films</em></span></a>
     </article>
     <article class="work" style="--tone:#4a4f55">
       <h3 class="work-title"><span lang="ko">지슬</span><span lang="en">Jiseul</span></h3>
       <small class="work-alt"><span lang="ko">Jiseul</span><span lang="en">지슬</span></small>
       <div class="work-meta"><span lang="ko">2013 · 영화</span><span lang="en">2013 · film</span></div>
       <p lang="ko">제주 4·3 사건 때 동굴로 피신한 마을 사람들을 흑백 화면으로 담았습니다. 2013년 선댄스 영화제 심사위원대상 수상작.</p><p lang="en">A black-and-white film about villagers hiding in caves during the Jeju April 3rd Incident. Grand Jury Prize, Sundance 2013.</p>
-      <a href="https://ko.wikipedia.org/wiki/%EC%A7%80%EC%8A%AC%3A_%EB%81%9D%EB%82%98%EC%A7%80_%EC%95%8A%EC%9D%80_%EC%84%B8%EC%9B%94_2" target="_blank" rel="noopener" lang="ko">자세히 보기 (위키백과) →</a><a href="https://en.wikipedia.org/wiki/Jiseul" target="_blank" rel="noopener" lang="en">Read more (Wikipedia) →</a>
+      <a class="trailer" href="https://www.youtube.com/watch?v=6I9qorM1ym4" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span><b><span lang="ko">공식 예고편 보기</span><span lang="en">Watch official trailer</span></b><em>YouTube · 인디스토리 Indiestory</em></span></a>
     </article>
   </div>
 </section>
