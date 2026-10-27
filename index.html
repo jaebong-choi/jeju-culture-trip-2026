@@ -71,6 +71,13 @@ h2 .date{font-size:1rem;font-weight:500;color:var(--red);font-variant-numeric:ta
   .day > li{grid-template-columns:1fr;gap:4px}
   .place .body{grid-template-columns:1fr}
 }
+.lead{font-size:1.05rem;max-width:40em;margin:0 0 24px}
+.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 32px}
+.about h3{font-size:1rem;color:var(--blue);margin-bottom:4px}
+.about p{margin:0;font-size:.95rem}
+.more{display:inline-block;margin-top:24px;padding:10px 16px;border:1px solid var(--blue);border-radius:4px;text-decoration:none;font-weight:500}
+.more:hover{background:var(--blue);color:var(--bg)}
+.map{display:inline-block;margin-top:8px;font-size:.85rem}
 .notice{color:var(--muted);font-size:.9rem;margin-top:12px}
 
 .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
@@ -111,6 +118,7 @@ footer img{width:200px;max-width:100%;filter:var(--logo-filter)}
 <nav class="bar" aria-label="Menu">
   <div class="wrap">
     <div class="links">
+      <a href="#about"><span lang="ko">제주 소개</span><span lang="en">About Jeju</span></a>
       <a href="#day1"><span lang="ko">1일차</span><span lang="en">Day 1</span></a>
       <a href="#day2"><span lang="ko">2일차</span><span lang="en">Day 2</span></a>
       <a href="#day3"><span lang="ko">3일차</span><span lang="en">Day 3</span></a>
@@ -127,6 +135,28 @@ footer img{width:200px;max-width:100%;filter:var(--logo-filter)}
 
 <main class="wrap">
 
+<section id="about">
+  <h2><span lang="ko">제주 알아보기</span><span lang="en">About Jeju</span></h2>
+  <p class="lead" lang="ko">제주도는 한국에서 가장 큰 섬입니다. 약 180만 년 전부터 이어진 화산 활동으로 만들어졌고, 섬 한가운데에 남한에서 가장 높은 산인 한라산(1,947m)이 있습니다. 섬 곳곳에는 '오름'이라 부르는 작은 화산 368개가 흩어져 있습니다.</p>
+  <p class="lead" lang="en">Jeju is Korea's largest island. It was formed by volcanic eruptions that began about 1.8 million years ago. Hallasan (1,947 m), the highest mountain in South Korea, stands in the middle, and 368 small volcanic cones called oreum are spread across the island.</p>
+  <div class="about">
+    <div><h3><span lang="ko">유네스코 3관왕</span><span lang="en">Three UNESCO titles</span></h3>
+      <p lang="ko">생물권보전지역(2002), 세계자연유산(2007), 세계지질공원(2010)으로 지정되었습니다. 이번 일정의 수월봉과 용머리해안이 세계지질공원 명소입니다.</p>
+      <p lang="en">Biosphere Reserve (2002), World Natural Heritage (2007) and Global Geopark (2010). Suwolbong and Yongmeori Coast on this trip are geopark sites.</p></div>
+    <div><h3><span lang="ko">역사</span><span lang="en">History</span></h3>
+      <p lang="ko">오랫동안 '탐라국'이라는 독립 왕국이었고, 고려 시대인 1105년 한국의 행정구역이 되었습니다. 1948년 제주 4·3 사건으로 많은 주민이 희생되었으며, 그 기록물은 2025년 유네스코 세계기록유산이 되었습니다.</p>
+      <p lang="en">For centuries Jeju was an independent kingdom called Tamna. It became part of Korea's administration in 1105. Many islanders died in the Jeju April 3rd Incident of 1948; its records were added to UNESCO's Memory of the World in 2025.</p></div>
+    <div><h3><span lang="ko">문화</span><span lang="en">Culture</span></h3>
+      <p lang="ko">바람, 돌, 여자가 많다고 해서 '삼다도'라고 불립니다. 산소통 없이 바다에 들어가 해산물을 캐는 해녀 문화는 2016년 유네스코 인류무형문화유산이 되었습니다. 돌하르방과 현무암 돌담도 제주에서만 볼 수 있는 풍경입니다.</p>
+      <p lang="en">Jeju is called Samdado, the island with plenty of wind, stones and women. Haenyeo, women who dive without air tanks to gather seafood, became UNESCO Intangible Cultural Heritage in 2016. Stone grandfather statues (dol hareubang) and black basalt walls are everywhere.</p></div>
+    <div><h3><span lang="ko">지켜 주세요</span><span lang="en">Please remember</span></h3>
+      <p lang="ko">해안과 오름의 돌, 화산송이는 섬 밖으로 가져갈 수 없습니다. 탐방로를 벗어나지 말고, 쓰레기는 되가져 와 주세요.</p>
+      <p lang="en">Volcanic stones and scoria may not be taken off the island. Stay on the marked trails and take your rubbish with you.</p></div>
+  </div>
+  <a class="more" href="https://www.visitjeju.net/kr" target="_blank" rel="noopener" lang="ko">제주관광공사 Visit Jeju에서 더 알아보기 →</a>
+  <a class="more" href="https://www.visitjeju.net/en" target="_blank" rel="noopener" lang="en">Learn more at Visit Jeju (Jeju Tourism Organization) →</a>
+</section>
+
 <section id="day1">
   <h2><span lang="ko">1일차 · 서부</span><span lang="en">Day 1 · West</span><span class="date"><span lang="ko">11.25(수)</span><span lang="en">Wed, Nov 25</span></span></h2>
   <ol class="day">
@@ -136,20 +166,20 @@ footer img{width:200px;max-width:100%;filter:var(--logo-filter)}
     <li class="place"><time>11:30</time><div class="body"><img src="img/geumneung.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">금능으뜸해변</span><span lang="en">Geumneung Beach</span><small lang="ko">Geumneung Beach</small><small lang="en">금능으뜸해변</small></h3>
       <p lang="ko">모래가 희고 물이 얕은 해변입니다. 바다 건너로 비양도가 보입니다.</p>
-      <p lang="en">White sand and shallow water, with Biyangdo island across the bay.</p></div></div></li>
+      <p lang="en">White sand and shallow water, with Biyangdo island across the bay.</p><a class="map" href="https://map.naver.com/p/search/%EA%B8%88%EB%8A%A5%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li class="place"><time></time><div class="body"><img src="img/horsepark.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">더마파크</span><span lang="en">The Horse Park</span><small lang="ko">The Horse Park</small><small lang="en">더마파크</small></h3>
       <p lang="ko">제주 말과 기마 공연을 볼 수 있는 곳입니다. 제주는 700년 넘게 말을 길러 왔습니다.</p>
-      <p lang="en">Horse-riding shows with Jeju horses. The island has raised horses for over 700 years.</p></div></div></li>
+      <p lang="en">Horse-riding shows with Jeju horses. The island has raised horses for over 700 years.</p><a class="map" href="https://map.naver.com/p/search/%EB%8D%94%EB%A7%88%ED%8C%8C%ED%81%AC" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li class="place"><time></time><div class="body"><img src="img/sinchang.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">신창풍차해안도로</span><span lang="en">Sinchang Windmill Coastal Road</span><small lang="ko">Sinchang Windmill Coastal Road</small><small lang="en">신창풍차해안도로</small></h3>
       <p lang="ko">바다 위에 풍력발전기가 줄지어 선 해안도로입니다. 해 질 무렵이 가장 좋습니다.</p>
-      <p lang="en">A coastal road with wind turbines standing in the sea. Best around sunset.</p></div></div></li>
+      <p lang="en">A coastal road with wind turbines standing in the sea. Best around sunset.</p><a class="map" href="https://map.naver.com/p/search/%EC%8B%A0%EC%B0%BD%ED%92%8D%EC%B0%A8%ED%95%B4%EC%95%88%EB%8F%84%EB%A1%9C" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li class="place"><time></time><div class="body"><img src="img/suwolbong.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">수월봉 지질트레일 (엉알해안)</span><span lang="en">Suwolbong Geotrail (Eongal Coast)</span><small lang="ko">Suwolbong Geotrail</small><small lang="en">수월봉 지질트레일</small></h3>
       <p lang="ko">약 1만 8천 년 전 화산 폭발로 쌓인 화산재 지층이 절벽에 그대로 드러나 있습니다.</p>
       <p lang="en">The cliffs show layers of volcanic ash from an eruption about 18,000 years ago.</p>
-      <div class="geo"><span lang="ko">유네스코 세계지질공원</span><span lang="en">UNESCO Global Geopark</span></div></div></div></li>
+      <div class="geo"><span lang="ko">유네스코 세계지질공원</span><span lang="en">UNESCO Global Geopark</span></div><a class="map" href="https://map.naver.com/p/search/%EC%88%98%EC%9B%94%EB%B4%89" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li><time>18:00</time><div class="meal"><b><span lang="ko">저녁</span><span lang="en">Dinner</span></b> · <span lang="ko">샤브샤브, 월남쌈</span><span lang="en">Shabu-shabu and rice-paper wraps</span> · <span lang="ko">19:30 숙소 도착</span><span lang="en">hotel by 19:30</span></div></li>
   </ol>
 </section>
@@ -161,22 +191,22 @@ footer img{width:200px;max-width:100%;filter:var(--logo-filter)}
     <li class="place"><time>09:00</time><div class="body"><img src="img/yongnuni.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">용눈이오름</span><span lang="en">Yongnuni Oreum</span><small lang="ko">Yongnuni Oreum</small><small lang="en">용눈이오름</small></h3>
       <p lang="ko">제주에는 '오름'이라 부르는 작은 화산이 368개 있습니다. 용눈이오름은 능선이 완만해 30분 정도면 걸을 수 있습니다.</p>
-      <p lang="en">Jeju has 368 small volcanic cones called oreum. This one has gentle ridges and takes about 30 minutes to walk.</p></div></div></li>
+      <p lang="en">Jeju has 368 small volcanic cones called oreum. This one has gentle ridges and takes about 30 minutes to walk.</p><a class="map" href="https://map.naver.com/p/search/%EC%9A%A9%EB%88%88%EC%9D%B4%EC%98%A4%EB%A6%84" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li class="place"><time></time><div class="body"><img src="img/gwangchigi.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">광치기해변</span><span lang="en">Gwangchigi Beach</span><small lang="ko">Gwangchigi Beach</small><small lang="en">광치기해변</small></h3>
       <p lang="ko">썰물 때 검은 용암 바위와 초록 이끼가 드러납니다. 정면에 성산일출봉이 보입니다.</p>
       <p lang="en">At low tide, black lava rock and green moss appear. Seongsan Ilchulbong stands right in front.</p>
-      <div class="geo"><span lang="ko">성산일출봉: 유네스코 세계자연유산</span><span lang="en">Seongsan Ilchulbong: UNESCO World Natural Heritage</span></div></div></div></li>
+      <div class="geo"><span lang="ko">성산일출봉: 유네스코 세계자연유산</span><span lang="en">Seongsan Ilchulbong: UNESCO World Natural Heritage</span></div><a class="map" href="https://map.naver.com/p/search/%EA%B4%91%EC%B9%98%EA%B8%B0%ED%95%B4%EB%B3%80" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li><time>13:00</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">갈치조림</span><span lang="en">Braised cutlassfish (갈치조림)</span></div></li>
     <li class="place"><time>14:00</time><div class="body"><img src="img/ilchulland.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">일출랜드</span><span lang="en">Ilchul Land</span><small lang="ko">Ilchul Land</small><small lang="en">일출랜드</small></h3>
       <p lang="ko">용암동굴인 미천굴을 중심으로 꾸민 정원입니다. 동굴 안을 직접 걸어볼 수 있습니다.</p>
-      <p lang="en">Gardens around Micheon Cave, a lava tube you can walk through.</p></div></div></li>
+      <p lang="en">Gardens around Micheon Cave, a lava tube you can walk through.</p><a class="map" href="https://map.naver.com/p/search/%EC%9D%BC%EC%B6%9C%EB%9E%9C%EB%93%9C" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li class="place"><time></time><div class="body"><img src="img/market.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">서귀포 매일올레시장</span><span lang="en">Seogwipo Maeil Olle Market</span><small lang="ko">Maeil Olle Market</small><small lang="en">매일올레시장</small></h3>
       <p lang="ko">서귀포에서 가장 큰 전통시장입니다. 길거리 음식, 감귤 간식, 기념품을 살 수 있습니다.</p>
       <p lang="en">Seogwipo's largest traditional market. Street food, tangerine snacks and souvenirs.</p>
-      <div class="cap"><span lang="ko">사진: 시장 바로 옆 이중섭거리</span><span lang="en">Photo: Lee Jung-seob Street, next to the market</span></div></div></div></li>
+      <div class="cap"><span lang="ko">사진: 시장 바로 옆 이중섭거리</span><span lang="en">Photo: Lee Jung-seob Street, next to the market</span></div><a class="map" href="https://map.naver.com/p/search/%EC%84%9C%EA%B7%80%ED%8F%AC%EB%A7%A4%EC%9D%BC%EC%98%AC%EB%A0%88%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li><time>18:00</time><div class="meal"><b><span lang="ko">저녁</span><span lang="en">Dinner</span></b> · <span lang="ko">흑돼지구이</span><span lang="en">Grilled black pork (흑돼지구이)</span></div></li>
   </ol>
 </section>
@@ -189,12 +219,12 @@ footer img{width:200px;max-width:100%;filter:var(--logo-filter)}
       <h3><span lang="ko">휴애리 자연생활공원</span><span lang="en">Hueree Natural Park</span><small lang="ko">Hueree Natural Park</small><small lang="en">휴애리</small></h3>
       <p lang="ko">11월 말은 감귤 수확철입니다. 귤을 직접 따서 맛볼 수 있습니다.</p>
       <p lang="en">Late November is tangerine harvest season. You will pick and taste them yourself.</p>
-      <div class="geo"><span lang="ko">감귤따기 체험</span><span lang="en">Tangerine picking</span></div></div></div></li>
+      <div class="geo"><span lang="ko">감귤따기 체험</span><span lang="en">Tangerine picking</span></div><a class="map" href="https://map.naver.com/p/search/%ED%9C%B4%EC%95%A0%EB%A6%AC%EC%9E%90%EC%97%B0%EC%83%9D%ED%99%9C%EA%B3%B5%EC%9B%90" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li class="place"><time></time><div class="body"><img src="img/yongmeori.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">용머리해안</span><span lang="en">Yongmeori Coast</span><small lang="ko">Yongmeori Coast</small><small lang="en">용머리해안</small></h3>
       <p lang="ko">산방산 아래, 용의 머리를 닮은 사암 절벽입니다. 물때와 파도에 따라 입장이 통제될 수 있습니다.</p>
       <p lang="en">Sandstone cliffs below Sanbangsan, shaped like a dragon's head. Entry depends on the tide and waves.</p>
-      <div class="geo"><span lang="ko">유네스코 세계지질공원</span><span lang="en">UNESCO Global Geopark</span></div></div></div></li>
+      <div class="geo"><span lang="ko">유네스코 세계지질공원</span><span lang="en">UNESCO Global Geopark</span></div><a class="map" href="https://map.naver.com/p/search/%EC%9A%A9%EB%A8%B8%EB%A6%AC%ED%95%B4%EC%95%88" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li><time>13:00</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">보말칼국수, 수육</span><span lang="en">Sea-snail noodle soup and boiled pork</span></div></li>
     <li><time>16:30</time><div><span lang="ko">제주공항 도착, 탑승 수속</span><span lang="en">Check in at Jeju Airport</span></div></li>
     <li><time>17:40</time><div><span lang="ko">제주공항 출발 → 18:50 대구공항 도착</span><span lang="en">Depart Jeju → arrive Daegu 18:50</span></div></li>
