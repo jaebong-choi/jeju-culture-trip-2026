@@ -13,15 +13,15 @@
 /* Layout: photo hero, a flight strip, then the itinerary as a time | content table per day */
 :root{
   --bg:#f3f5f4; --fg:#1f2629; --muted:#5f6b6e; --line:#d6dddc;
-  --basalt:#2a3236; --red:#df2d32; --blue:#014099; --logo-light:block; --logo-dark:none;
+  --basalt:#2a3236; --red:#df2d32; --blue:#014099; --logo-light:block; --logo-dark:none; --d3:#e07b00; --sea-bg:#dcebf0; --land:#e4ecd2; --land-edge:#c3d3a6; --mtn:#9bb57a;
   --font:"IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#15191b; --fg:#e6ebea; --muted:#9aa6a8; --line:#2c3538;
-  --basalt:#0c1012; --red:#ff6b6f; --blue:#7fa8f0; --logo-light:none; --logo-dark:block; color-scheme:dark}}
+  --basalt:#0c1012; --red:#ff6b6f; --blue:#7fa8f0; --logo-light:none; --logo-dark:block; --d3:#f5a142; --sea-bg:#14262e; --land:#2a3a2c; --land-edge:#3d5240; --mtn:#4f6b4a; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#15191b; --fg:#e6ebea; --muted:#9aa6a8; --line:#2c3538;
-  --basalt:#0c1012; --red:#ff6b6f; --blue:#7fa8f0; --logo-light:none; --logo-dark:block; color-scheme:dark}
+  --basalt:#0c1012; --red:#ff6b6f; --blue:#7fa8f0; --logo-light:none; --logo-dark:block; --d3:#f5a142; --sea-bg:#14262e; --land:#2a3a2c; --land-edge:#3d5240; --mtn:#4f6b4a; color-scheme:dark}
 :root[data-lang="ko"] body [lang="en"], :root[data-lang="en"] body [lang="ko"]{display:none}
 
 body{background:var(--bg);color:var(--fg);font:16px/1.7 var(--font);word-break:keep-all}
@@ -78,6 +78,25 @@ h2 .date{font-size:1rem;font-weight:500;color:var(--red);font-variant-numeric:ta
 .more{display:inline-block;margin-top:24px;padding:10px 16px;border:1px solid var(--blue);border-radius:4px;text-decoration:none;font-weight:500}
 .more:hover{background:var(--blue);color:var(--bg)}
 .map{display:inline-block;margin-top:8px;font-size:.85rem}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.88rem;color:var(--muted);margin-bottom:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.mapbox{background:var(--sea-bg);border-radius:6px;padding:12px;overflow:hidden}
+.mapbox svg{display:block;width:100%;height:auto;max-width:100%}
+.island{fill:var(--land);stroke:var(--land-edge);stroke-width:3;stroke-linejoin:round}
+.mtn{fill:var(--mtn)}
+.snow{fill:var(--bg)}
+.land{fill:var(--muted);font:500 15px var(--font)}
+.plane{stroke:var(--muted);stroke-width:3;fill:none;stroke-linecap:round}
+.pin circle{stroke:var(--bg);stroke-width:3}
+.pin text{fill:#fff;font:700 17px var(--font)}
+.pin:hover circle{r:21}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:16px}
+.tile{position:relative;display:block;text-decoration:none;color:var(--fg)}
+.tile img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;display:block;max-width:100%}
+.tile .n{position:absolute;top:6px;left:6px;width:24px;height:24px;border-radius:50%;color:#fff;font-size:.8rem;font-weight:700;display:grid;place-items:center}
+.tile .t{display:block;font-size:.88rem;margin-top:4px;line-height:1.35}
+.tile:hover .t{color:var(--red)}
+.day > li{scroll-margin-top:60px}
 .notice{color:var(--muted);font-size:.9rem;margin-top:12px}
 
 .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
@@ -120,6 +139,7 @@ footer img.dark{display:var(--logo-dark)}
   <div class="wrap">
     <div class="links">
       <a href="#about"><span lang="ko">제주 소개</span><span lang="en">About Jeju</span></a>
+      <a href="#map"><span lang="ko">지도</span><span lang="en">Map</span></a>
       <a href="#day1"><span lang="ko">1일차</span><span lang="en">Day 1</span></a>
       <a href="#day2"><span lang="ko">2일차</span><span lang="en">Day 2</span></a>
       <a href="#day3"><span lang="ko">3일차</span><span lang="en">Day 3</span></a>
@@ -158,25 +178,32 @@ footer img.dark{display:var(--logo-dark)}
   <a class="more" href="https://www.visitjeju.net/en" target="_blank" rel="noopener" lang="en">Learn more at Visit Jeju (Jeju Tourism Organization) →</a>
 </section>
 
+<section id="map">
+  <h2><span lang="ko">한눈에 보는 여행 지도</span><span lang="en">Trip map</span></h2>
+  <div class="legend"><span><i style="background:var(--red)"></i><span lang="ko">1일차 서부</span><span lang="en">Day 1 West</span></span><span><i style="background:var(--blue)"></i><span lang="ko">2일차 동부</span><span lang="en">Day 2 East</span></span><span><i style="background:var(--d3)"></i><span lang="ko">3일차 남부</span><span lang="en">Day 3 South</span></span></div>
+  <div class="mapbox"><svg viewBox="0 0 860 470" role="img" aria-label="Jeju map with trip stops"><path d="M43.0,357.0 L48.0,315.4 L80.0,283.2 L115.0,243.9 L148.0,214.2 L180.0,190.4 L220.0,166.6 L260.0,148.8 L310.0,130.9 L370.0,109.5 L410.0,97.6 L460.0,92.8 L510.0,83.3 L550.0,71.4 L600.0,55.9 L645.0,47.6 L680.0,51.2 L720.0,73.8 L750.0,89.3 L785.0,107.1 L805.0,136.9 L820.0,164.2 L825.0,182.1 L810.0,199.9 L780.0,232.1 L760.0,259.4 L740.0,297.5 L700.0,333.2 L650.0,357.0 L600.0,374.9 L550.0,395.1 L500.0,414.1 L455.0,428.4 L410.0,430.8 L360.0,428.4 L310.0,428.4 L270.0,434.4 L220.0,442.7 L185.0,458.1 L160.0,476.0 L135.0,464.1 L105.0,449.8 L75.0,418.9 L55.0,392.7Z" class="island"/><path d="M343.0,313.2 L413.0,249.2 L483.0,313.2Z" class="mtn"/><path d="M393.0,275.2 L413.0,249.2 L433.0,275.2 L421.0,271.2 L413.0,279.2 L405.0,271.2Z" class="snow"/><text x="413.0" y="335.2" class="land" text-anchor="middle"><tspan lang="ko">한라산 1,947m</tspan><tspan lang="en">Hallasan 1,947 m</tspan></text><g class="land"><path d="M361.0,110.7 l24,0 M373.0,100.7 l0,20 M367.0,118.7 l12,0" class="plane"/><text x="373.0" y="94.7" text-anchor="middle"><tspan lang="ko">제주공항</tspan><tspan lang="en">Jeju Airport</tspan></text></g><text x="448.0" y="438.2" class="land" text-anchor="middle"><tspan lang="ko">서귀포 · 숙소</tspan><tspan lang="en">Seogwipo · hotel</tspan></text><a href="#p-geumneung"><g class="pin"><circle cx="115.0" cy="249.9" r="17" style="fill:var(--red)"/><text x="115.0" y="255.9" text-anchor="middle">1</text></g></a><a href="#p-horsepark"><g class="pin"><circle cx="165.0" cy="271.3" r="17" style="fill:var(--red)"/><text x="165.0" y="277.3" text-anchor="middle">2</text></g></a><a href="#p-sinchang"><g class="pin"><circle cx="52.0" cy="303.5" r="17" style="fill:var(--red)"/><text x="52.0" y="309.5" text-anchor="middle">3</text></g></a><a href="#p-suwolbong"><g class="pin"><circle cx="43.0" cy="362.9" r="17" style="fill:var(--red)"/><text x="43.0" y="368.9" text-anchor="middle">4</text></g></a><a href="#p-yongnuni"><g class="pin"><circle cx="712.0" cy="167.8" r="17" style="fill:var(--blue)"/><text x="712.0" y="173.8" text-anchor="middle">5</text></g></a><a href="#p-gwangchigi"><g class="pin"><circle cx="804.0" cy="176.1" r="17" style="fill:var(--blue)"/><text x="804.0" y="182.1" text-anchor="middle">6</text></g></a><a href="#p-ilchulland"><g class="pin"><circle cx="720.0" cy="249.9" r="17" style="fill:var(--blue)"/><text x="720.0" y="255.9" text-anchor="middle">7</text></g></a><a href="#p-market"><g class="pin"><circle cx="444.0" cy="416.5" r="17" style="fill:var(--blue)"/><text x="444.0" y="422.5" text-anchor="middle">8</text></g></a><a href="#p-hueree"><g class="pin"><circle cx="513.0" cy="348.7" r="17" style="fill:var(--d3)"/><text x="513.0" y="354.7" text-anchor="middle">9</text></g></a><a href="#p-yongmeori"><g class="pin"><circle cx="194.0" cy="437.9" r="17" style="fill:var(--d3)"/><text x="194.0" y="443.9" text-anchor="middle">10</text></g></a></svg></div>
+  <div class="tiles"><a class="tile" href="#p-geumneung"><img src="img/geumneung.webp" alt="" loading="lazy"><span class="n" style="background:var(--red)">1</span><span class="t"><span lang="ko">금능으뜸해변</span><span lang="en">Geumneung Beach</span></span></a><a class="tile" href="#p-horsepark"><img src="img/horsepark.webp" alt="" loading="lazy"><span class="n" style="background:var(--red)">2</span><span class="t"><span lang="ko">더마파크</span><span lang="en">The Horse Park</span></span></a><a class="tile" href="#p-sinchang"><img src="img/sinchang.webp" alt="" loading="lazy"><span class="n" style="background:var(--red)">3</span><span class="t"><span lang="ko">신창풍차해안도로</span><span lang="en">Sinchang Windmill Road</span></span></a><a class="tile" href="#p-suwolbong"><img src="img/suwolbong.webp" alt="" loading="lazy"><span class="n" style="background:var(--red)">4</span><span class="t"><span lang="ko">수월봉 지질트레일</span><span lang="en">Suwolbong Geotrail</span></span></a><a class="tile" href="#p-yongnuni"><img src="img/yongnuni.webp" alt="" loading="lazy"><span class="n" style="background:var(--blue)">5</span><span class="t"><span lang="ko">용눈이오름</span><span lang="en">Yongnuni Oreum</span></span></a><a class="tile" href="#p-gwangchigi"><img src="img/gwangchigi.webp" alt="" loading="lazy"><span class="n" style="background:var(--blue)">6</span><span class="t"><span lang="ko">광치기해변</span><span lang="en">Gwangchigi Beach</span></span></a><a class="tile" href="#p-ilchulland"><img src="img/ilchulland.webp" alt="" loading="lazy"><span class="n" style="background:var(--blue)">7</span><span class="t"><span lang="ko">일출랜드</span><span lang="en">Ilchul Land</span></span></a><a class="tile" href="#p-market"><img src="img/market.webp" alt="" loading="lazy"><span class="n" style="background:var(--blue)">8</span><span class="t"><span lang="ko">매일올레시장</span><span lang="en">Maeil Olle Market</span></span></a><a class="tile" href="#p-hueree"><img src="img/hueree.webp" alt="" loading="lazy"><span class="n" style="background:var(--d3)">9</span><span class="t"><span lang="ko">휴애리</span><span lang="en">Hueree Park</span></span></a><a class="tile" href="#p-yongmeori"><img src="img/yongmeori.webp" alt="" loading="lazy"><span class="n" style="background:var(--d3)">10</span><span class="t"><span lang="ko">용머리해안</span><span lang="en">Yongmeori Coast</span></span></a></div>
+</section>
+
 <section id="day1">
   <h2><span lang="ko">1일차 · 서부</span><span lang="en">Day 1 · West</span><span class="date"><span lang="ko">11.25(수)</span><span lang="en">Wed, Nov 25</span></span></h2>
   <ol class="day">
     <li><time>07:00</time><div><span lang="ko">쉐턱관 앞 집결, 버스로 대구공항 이동</span><span lang="en">Meet in front of Shattuck Hall (쉐턱관), bus to Daegu Airport</span></div></li>
     <li><time>08:55</time><div><span lang="ko">대구공항 출발 → 10:05 제주공항 도착</span><span lang="en">Depart Daegu → arrive Jeju 10:05</span></div></li>
     <li><time>10:30</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">흑돼지두루치기</span><span lang="en">Stir-fried black pork (흑돼지두루치기)</span></div></li>
-    <li class="place"><time>11:30</time><div class="body"><img src="img/geumneung.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-geumneung"><time>11:30</time><div class="body"><img src="img/geumneung.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">금능으뜸해변</span><span lang="en">Geumneung Beach</span><small lang="ko">Geumneung Beach</small><small lang="en">금능으뜸해변</small></h3>
       <p lang="ko">모래가 희고 물이 얕은 해변입니다. 바다 건너로 비양도가 보입니다.</p>
       <p lang="en">White sand and shallow water, with Biyangdo island across the bay.</p><a class="map" href="https://map.naver.com/p/search/%EA%B8%88%EB%8A%A5%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li class="place"><time></time><div class="body"><img src="img/horsepark.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-horsepark"><time></time><div class="body"><img src="img/horsepark.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">더마파크</span><span lang="en">The Horse Park</span><small lang="ko">The Horse Park</small><small lang="en">더마파크</small></h3>
       <p lang="ko">제주 말과 기마 공연을 볼 수 있는 곳입니다. 제주는 700년 넘게 말을 길러 왔습니다.</p>
       <p lang="en">Horse-riding shows with Jeju horses. The island has raised horses for over 700 years.</p><a class="map" href="https://map.naver.com/p/search/%EB%8D%94%EB%A7%88%ED%8C%8C%ED%81%AC" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li class="place"><time></time><div class="body"><img src="img/sinchang.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-sinchang"><time></time><div class="body"><img src="img/sinchang.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">신창풍차해안도로</span><span lang="en">Sinchang Windmill Coastal Road</span><small lang="ko">Sinchang Windmill Coastal Road</small><small lang="en">신창풍차해안도로</small></h3>
       <p lang="ko">바다 위에 풍력발전기가 줄지어 선 해안도로입니다. 해 질 무렵이 가장 좋습니다.</p>
       <p lang="en">A coastal road with wind turbines standing in the sea. Best around sunset.</p><a class="map" href="https://map.naver.com/p/search/%EC%8B%A0%EC%B0%BD%ED%92%8D%EC%B0%A8%ED%95%B4%EC%95%88%EB%8F%84%EB%A1%9C" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li class="place"><time></time><div class="body"><img src="img/suwolbong.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-suwolbong"><time></time><div class="body"><img src="img/suwolbong.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">수월봉 지질트레일 (엉알해안)</span><span lang="en">Suwolbong Geotrail (Eongal Coast)</span><small lang="ko">Suwolbong Geotrail</small><small lang="en">수월봉 지질트레일</small></h3>
       <p lang="ko">약 1만 8천 년 전 화산 폭발로 쌓인 화산재 지층이 절벽에 그대로 드러나 있습니다.</p>
       <p lang="en">The cliffs show layers of volcanic ash from an eruption about 18,000 years ago.</p>
@@ -189,21 +216,21 @@ footer img.dark{display:var(--logo-dark)}
   <h2><span lang="ko">2일차 · 동부</span><span lang="en">Day 2 · East</span><span class="date"><span lang="ko">11.26(목)</span><span lang="en">Thu, Nov 26</span></span></h2>
   <ol class="day">
     <li><time>08:00</time><div><span lang="ko">호텔 조식, 09:00 출발</span><span lang="en">Breakfast at the hotel, leave at 09:00</span></div></li>
-    <li class="place"><time>09:00</time><div class="body"><img src="img/yongnuni.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-yongnuni"><time>09:00</time><div class="body"><img src="img/yongnuni.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">용눈이오름</span><span lang="en">Yongnuni Oreum</span><small lang="ko">Yongnuni Oreum</small><small lang="en">용눈이오름</small></h3>
       <p lang="ko">제주에는 '오름'이라 부르는 작은 화산이 368개 있습니다. 용눈이오름은 능선이 완만해 30분 정도면 걸을 수 있습니다.</p>
       <p lang="en">Jeju has 368 small volcanic cones called oreum. This one has gentle ridges and takes about 30 minutes to walk.</p><a class="map" href="https://map.naver.com/p/search/%EC%9A%A9%EB%88%88%EC%9D%B4%EC%98%A4%EB%A6%84" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li class="place"><time></time><div class="body"><img src="img/gwangchigi.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-gwangchigi"><time></time><div class="body"><img src="img/gwangchigi.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">광치기해변</span><span lang="en">Gwangchigi Beach</span><small lang="ko">Gwangchigi Beach</small><small lang="en">광치기해변</small></h3>
       <p lang="ko">썰물 때 검은 용암 바위와 초록 이끼가 드러납니다. 정면에 성산일출봉이 보입니다.</p>
       <p lang="en">At low tide, black lava rock and green moss appear. Seongsan Ilchulbong stands right in front.</p>
       <div class="geo"><span lang="ko">성산일출봉: 유네스코 세계자연유산</span><span lang="en">Seongsan Ilchulbong: UNESCO World Natural Heritage</span></div><a class="map" href="https://map.naver.com/p/search/%EA%B4%91%EC%B9%98%EA%B8%B0%ED%95%B4%EB%B3%80" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
     <li><time>13:00</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">갈치조림</span><span lang="en">Braised cutlassfish (갈치조림)</span></div></li>
-    <li class="place"><time>14:00</time><div class="body"><img src="img/ilchulland.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-ilchulland"><time>14:00</time><div class="body"><img src="img/ilchulland.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">일출랜드</span><span lang="en">Ilchul Land</span><small lang="ko">Ilchul Land</small><small lang="en">일출랜드</small></h3>
       <p lang="ko">용암동굴인 미천굴을 중심으로 꾸민 정원입니다. 동굴 안을 직접 걸어볼 수 있습니다.</p>
       <p lang="en">Gardens around Micheon Cave, a lava tube you can walk through.</p><a class="map" href="https://map.naver.com/p/search/%EC%9D%BC%EC%B6%9C%EB%9E%9C%EB%93%9C" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li class="place"><time></time><div class="body"><img src="img/market.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-market"><time></time><div class="body"><img src="img/market.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">서귀포 매일올레시장</span><span lang="en">Seogwipo Maeil Olle Market</span><small lang="ko">Maeil Olle Market</small><small lang="en">매일올레시장</small></h3>
       <p lang="ko">서귀포에서 가장 큰 전통시장입니다. 길거리 음식, 감귤 간식, 기념품을 살 수 있습니다.</p>
       <p lang="en">Seogwipo's largest traditional market. Street food, tangerine snacks and souvenirs.</p>
@@ -216,12 +243,12 @@ footer img.dark{display:var(--logo-dark)}
   <h2><span lang="ko">3일차 · 남부</span><span lang="en">Day 3 · South</span><span class="date"><span lang="ko">11.27(금)</span><span lang="en">Fri, Nov 27</span></span></h2>
   <ol class="day">
     <li><time>08:00</time><div><span lang="ko">호텔 조식, 09:00 출발</span><span lang="en">Breakfast at the hotel, leave at 09:00</span></div></li>
-    <li class="place"><time>09:00</time><div class="body"><img src="img/hueree.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-hueree"><time>09:00</time><div class="body"><img src="img/hueree.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">휴애리 자연생활공원</span><span lang="en">Hueree Natural Park</span><small lang="ko">Hueree Natural Park</small><small lang="en">휴애리</small></h3>
       <p lang="ko">11월 말은 감귤 수확철입니다. 귤을 직접 따서 맛볼 수 있습니다.</p>
       <p lang="en">Late November is tangerine harvest season. You will pick and taste them yourself.</p>
       <div class="geo"><span lang="ko">감귤따기 체험</span><span lang="en">Tangerine picking</span></div><a class="map" href="https://map.naver.com/p/search/%ED%9C%B4%EC%95%A0%EB%A6%AC%EC%9E%90%EC%97%B0%EC%83%9D%ED%99%9C%EA%B3%B5%EC%9B%90" target="_blank" rel="noopener"><span lang="ko">네이버 지도에서 보기</span><span lang="en">Open in Naver Map</span></a></div></div></li>
-    <li class="place"><time></time><div class="body"><img src="img/yongmeori.webp" alt="" loading="lazy"><div>
+    <li class="place" id="p-yongmeori"><time></time><div class="body"><img src="img/yongmeori.webp" alt="" loading="lazy"><div>
       <h3><span lang="ko">용머리해안</span><span lang="en">Yongmeori Coast</span><small lang="ko">Yongmeori Coast</small><small lang="en">용머리해안</small></h3>
       <p lang="ko">산방산 아래, 용의 머리를 닮은 사암 절벽입니다. 물때와 파도에 따라 입장이 통제될 수 있습니다.</p>
       <p lang="en">Sandstone cliffs below Sanbangsan, shaped like a dragon's head. Entry depends on the tide and waves.</p>
