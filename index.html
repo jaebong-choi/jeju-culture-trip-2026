@@ -194,15 +194,17 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
 .play.big{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;z-index:1;box-shadow:0 4px 14px rgba(0,0,0,.35)}
 .play.big::after{left:20px;top:15px;border-left-width:16px;border-top-width:11px;border-bottom-width:11px}
 .work:hover .play.big{transform:scale(1.1)}
+.event{background:var(--glass);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:12px;padding:16px 18px}
+.event b{color:var(--red);font-weight:500}
 </style>
 
 <header class="hero">
   <div class="wrap">
     <img class="seal" src="img/kmcu-symbol.png" alt="계명문화대학교 Keimyung College University">
-    <div class="org"><span lang="ko">계명문화대학교 · 아세안 TVET 학생교류사업</span><span lang="en">Keimyung College University · ASEAN TVET Student Exchange</span></div>
+    <div class="org"><span lang="ko">계명문화대학교 국제처 · 외국인 유학생 &amp; 아세안 TVET 교류학생</span><span lang="en">Keimyung College University · International Students &amp; ASEAN TVET Exchange</span></div>
     <p class="hand">혼저 옵서예!</p>
     <p class="hand-note"><span lang="ko">제주말로 “어서 오세요”라는 뜻이에요</span><span lang="en">Jeju dialect for “Welcome”</span></p>
-    <h1><span lang="ko">제주 문화탐방</span><span lang="en">Jeju Culture Trip</span></h1>
+    <h1><span lang="ko">제주 유네스코 문화탐방</span><span lang="en">Jeju UNESCO Culture Trip</span></h1>
   </div>
 </header>
 
@@ -212,6 +214,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
     <div><dt><span lang="ko">가는 편 · 진에어</span><span lang="en">Outbound · Jin Air</span></dt><dd>TAE 08:55 → CJU 10:05</dd></div>
     <div><dt><span lang="ko">오는 편 · 진에어</span><span lang="en">Return · Jin Air</span></dt><dd>CJU 17:40 → TAE 18:50</dd></div>
     <div><dt><span lang="ko">숙소 (2박)</span><span lang="en">Hotel (2 nights)</span></dt><dd><span lang="ko">서귀포 JS호텔</span><span lang="en">Seogwipo JS Hotel</span></dd></div>
+    <div><dt><span lang="ko">함께 가는 사람</span><span lang="en">Travelling together</span></dt><dd><span lang="ko">유학생 24명 · TVET 교류학생 11명 · 인솔 3명</span><span lang="en">24 international students · 11 TVET students · 3 staff</span></dd></div>
   </dl>
 </div>
 
@@ -419,6 +422,9 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
 <section id="tips">
   <h2><span lang="ko">준비물과 연락처</span><span lang="en">Packing and contacts</span></h2>
   <div class="tips">
+    <div class="event"><h3><span lang="ko">SNS 사진 이벤트</span><span lang="en">SNS photo event</span></h3>
+      <ul lang="ko"><li>여행 중 찍은 사진과 후기를 개인 SNS에 올려 주세요 (혼자 또는 팀)</li><li>필수 해시태그: <b>#계명문화대학교 #제주도문화탐방</b></li><li>유학생지원팀이 확인해 우수 10팀에게 선물을 드립니다</li></ul>
+      <ul lang="en"><li>Post your trip photos and a short review on your own SNS, alone or as a team</li><li>Required hashtags: <b>#계명문화대학교 #제주도문화탐방</b></li><li>The International Student Support Team picks the best 10 teams for a gift</li></ul></div>
     <div><h3><span lang="ko">날씨·준비물</span><span lang="en">Weather and packing</span></h3>
       <ul lang="ko"><li>11월 말 기온 8–16°C, 해안은 바람이 강함</li><li>바람막이 되는 따뜻한 겉옷, 모자</li><li>미끄럽지 않은 운동화 (바위 해안, 오름)</li><li>신분증 (여권 또는 외국인등록증)</li><li>보조배터리, 작은 우산</li></ul>
       <ul lang="en"><li>Late November: 8–16°C, strong wind on the coast</li><li>Warm windproof jacket and a hat</li><li>Shoes with good grip (rocky coast, hill walk)</li><li>ID for the flight: passport or ARC</li><li>Power bank and a small umbrella</li></ul></div>
@@ -426,7 +432,8 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
       <ul lang="ko"><li>돼지고기가 들어간 식사가 있습니다. 할랄 등 식단 요청은 <b>출발 전</b> 인솔자에게 알려 주세요</li><li>알레르기나 복용 중인 약도 미리 알려 주세요</li></ul>
       <ul lang="en"><li>Some meals include pork. Tell the leader <b>before departure</b> if you need halal or other food</li><li>Tell the leader about allergies or medicine you take</li></ul></div>
     <div><h3><span lang="ko">연락처</span><span lang="en">Contacts</span></h3>
-      <ul><li><span lang="ko">인솔: 국제협력지원팀 강지현</span><span lang="en">Leader: Kang Ji-hyun, International Cooperation Team</span><br><span class="num">053-589-7886</span></li>
+      <ul><li><span lang="ko">인솔 (유학생): 유학생지원팀 서유정, 응웬티짱</span><span lang="en">Staff for international students: Seo Yu-jeong, Nguyen Thi Trang (International Student Support Team)</span><br><span class="num">053-589-7359</span></li>
+      <li><span lang="ko">인솔 (TVET 교류학생): 국제협력지원팀 강지현</span><span lang="en">Staff for TVET students: Kang Ji-hyun (International Cooperation Team)</span><br><span class="num">053-589-7886</span></li>
       <li><span lang="ko">여행사: ㈜제주행운여행사</span><span lang="en">Travel agency: Jeju Haengun Travel</span><br><span class="num">064-746-0045</span></li>
       <li><span lang="ko">경찰</span><span lang="en">Police</span> <span class="num">112</span> · <span lang="ko">구급·화재</span><span lang="en">Ambulance/Fire</span> <span class="num">119</span></li>
       <li><span lang="ko">관광통역안내 (영어·말레이어·인도네시아어)</span><span lang="en">Korea Travel Hotline (English, Malay, Indonesian)</span> <span class="num">1330</span></li></ul></div>
@@ -434,7 +441,7 @@ section[id^="day"] h2{position:sticky;top:calc(env(safe-area-inset-top,0px) + va
 </section>
 
 </main>
-<footer class="wrap"><img src="img/kmcu-signature.png" alt="계명문화대학교 Keimyung College University"><img class="dark" src="img/kmcu-signature-dark.png" alt="계명문화대학교 Keimyung College University"><div><span lang="ko">사진·영상 출처:</span><span lang="en">Photos and videos:</span> <a href="https://www.visitjeju.net" target="_blank" rel="noopener">Visit Jeju</a>, <a href="https://ijto.or.kr/korean/" target="_blank" rel="noopener"><span lang="ko">제주관광공사</span><span lang="en">Jeju Tourism Organization</span></a> · <span lang="ko">계명문화대학교 국제협력지원팀</span><span lang="en">Keimyung College University, International Cooperation Team</span></div></footer>
+<footer class="wrap"><img src="img/kmcu-signature.png" alt="계명문화대학교 Keimyung College University"><img class="dark" src="img/kmcu-signature-dark.png" alt="계명문화대학교 Keimyung College University"><div><span lang="ko">사진·영상 출처:</span><span lang="en">Photos and videos:</span> <a href="https://www.visitjeju.net" target="_blank" rel="noopener">Visit Jeju</a>, <a href="https://ijto.or.kr/korean/" target="_blank" rel="noopener"><span lang="ko">제주관광공사</span><span lang="en">Jeju Tourism Organization</span></a> · <span lang="ko">계명문화대학교 국제처 (유학생지원팀 · 국제협력지원팀)</span><span lang="en">Keimyung College University, Office of International Affairs</span></div></footer>
 
 <script>
 const root = document.documentElement;
