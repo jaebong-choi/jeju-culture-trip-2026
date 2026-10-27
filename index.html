@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Jeju Culture Trip 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: photo hero, a flight strip, then the itinerary as a time | content table per day */
+:root{
+  --bg:#f3f5f4; --fg:#1f2629; --muted:#5f6b6e; --line:#d6dddc;
+  --basalt:#2a3236; --red:#df2d32; --blue:#014099; --logo-filter:none;
+  --font:"IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15191b; --fg:#e6ebea; --muted:#9aa6a8; --line:#2c3538;
+  --basalt:#0c1012; --red:#ff6b6f; --blue:#7fa8f0; --logo-filter:brightness(0) invert(1); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15191b; --fg:#e6ebea; --muted:#9aa6a8; --line:#2c3538;
+  --basalt:#0c1012; --red:#ff6b6f; --blue:#7fa8f0; --logo-filter:brightness(0) invert(1); color-scheme:dark}
+:root[data-lang="ko"] body [lang="en"], :root[data-lang="en"] body [lang="ko"]{display:none}
+
+body{background:var(--bg);color:var(--fg);font:16px/1.7 var(--font);word-break:keep-all}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;line-height:1.3;margin:0}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+
+.hero{background:var(--basalt) url(img/hero.webp) center 60%/cover;color:#fff}
+.hero .wrap{padding-block:clamp(96px,18vw,180px) 28px;background:linear-gradient(transparent,rgba(0,0,0,.55) 70%)}
+.hero .org{font-size:.9rem;opacity:.9}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);font-weight:700;margin-top:4px}
+
+.flight{border-bottom:1px solid var(--line)}
+.flight dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px 24px;margin:0;padding-block:18px}
+.flight dt{font-size:.8rem;color:var(--muted)}
+.flight dd{margin:0;font-weight:500;font-variant-numeric:tabular-nums}
+
+nav.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.bar .wrap{display:flex;align-items:center;gap:8px}
+.links{display:flex;overflow-x:auto;flex:1;min-width:0}
+.links a{padding:12px 10px;text-decoration:none;color:var(--fg);white-space:nowrap;font-size:.92rem}
+.links a:hover{color:var(--red)}
+.tools{display:flex;gap:6px;flex-shrink:0}
+.tools button{font:inherit;font-size:.82rem;color:var(--fg);background:none;border:1px solid var(--line);border-radius:4px;padding:4px 9px;cursor:pointer}
+.tools button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+section{padding-block:44px 4px}
+h2{font-size:1.6rem;font-weight:700;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:18px}
+h2 .date{font-size:1rem;font-weight:500;color:var(--red);font-variant-numeric:tabular-nums}
+
+.day{list-style:none;margin:0;padding:0}
+.day > li{display:grid;grid-template-columns:6.5rem 1fr;gap:16px;padding-block:12px;border-top:1px solid var(--line)}
+.day time{font-variant-numeric:tabular-nums;font-weight:500;color:var(--muted)}
+.day .place time{color:var(--blue)}
+.place .body{display:grid;grid-template-columns:180px 1fr;gap:16px;align-items:start}
+.place img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;display:block;max-width:100%}
+.place h3{font-size:1.15rem;font-weight:700}
+.place h3 small{font-weight:400;color:var(--muted);font-size:.85rem;margin-left:6px}
+.place p{margin:.3em 0 0}
+.geo{font-size:.85rem;color:var(--blue);font-weight:500;margin-top:6px}
+.cap{font-size:.8rem;color:var(--muted);margin-top:4px}
+.meal{color:var(--muted)}
+.meal b{color:var(--fg);font-weight:500}
+@media (max-width:600px){
+  .day > li{grid-template-columns:1fr;gap:4px}
+  .place .body{grid-template-columns:1fr}
+}
+.notice{color:var(--muted);font-size:.9rem;margin-top:12px}
+
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.videos a{text-decoration:none;color:var(--fg)}
+.videos img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:3px;display:block;max-width:100%}
+.videos span{display:block;margin-top:6px;font-size:.95rem;line-height:1.45}
+.videos a:hover span{color:var(--red)}
+.videos em{font-style:normal;color:var(--muted);font-size:.8rem}
+
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px 32px}
+.tips h3{font-size:1.05rem;margin-bottom:6px}
+.tips ul{margin:0;padding-left:18px}
+.tips li{margin-bottom:4px}
+.num{font-variant-numeric:tabular-nums;font-weight:500;user-select:all}
+
+footer{color:var(--muted);font-size:.82rem;padding-block:48px 40px;display:grid;gap:14px}
+footer img{width:200px;max-width:100%;filter:var(--logo-filter)}
+.hero .seal{width:52px;height:auto;display:block;margin-bottom:14px}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="seal" src="img/kmcu-symbol.png" alt="계명문화대학교 Keimyung College University">
+    <div class="org"><span lang="ko">계명문화대학교 · 아세안 TVET 학생교류사업</span><span lang="en">Keimyung College University · ASEAN TVET Student Exchange</span></div>
+    <h1><span lang="ko">제주 문화탐방</span><span lang="en">Jeju Culture Trip</span></h1>
+  </div>
+</header>
+
+<div class="flight wrap">
+  <dl>
+    <div><dt><span lang="ko">기간</span><span lang="en">Dates</span></dt><dd><span lang="ko">2026.11.25(수) – 11.27(금)</span><span lang="en">Nov 25 (Wed) – 27 (Fri), 2026</span></dd></div>
+    <div><dt><span lang="ko">가는 편 · 진에어</span><span lang="en">Outbound · Jin Air</span></dt><dd>TAE 08:55 → CJU 10:05</dd></div>
+    <div><dt><span lang="ko">오는 편 · 진에어</span><span lang="en">Return · Jin Air</span></dt><dd>CJU 17:40 → TAE 18:50</dd></div>
+    <div><dt><span lang="ko">숙소 (2박)</span><span lang="en">Hotel (2 nights)</span></dt><dd><span lang="ko">서귀포 JS호텔</span><span lang="en">Seogwipo JS Hotel</span></dd></div>
+  </dl>
+</div>
+
+<nav class="bar" aria-label="Menu">
+  <div class="wrap">
+    <div class="links">
+      <a href="#day1"><span lang="ko">1일차</span><span lang="en">Day 1</span></a>
+      <a href="#day2"><span lang="ko">2일차</span><span lang="en">Day 2</span></a>
+      <a href="#day3"><span lang="ko">3일차</span><span lang="en">Day 3</span></a>
+      <a href="#videos"><span lang="ko">영상</span><span lang="en">Videos</span></a>
+      <a href="#tips"><span lang="ko">준비물·연락처</span><span lang="en">Tips</span></a>
+    </div>
+    <div class="tools">
+      <button type="button" id="lang-ko" data-set-lang="ko">한국어</button>
+      <button type="button" id="lang-en" data-set-lang="en">EN</button>
+      <button type="button" id="theme-btn"></button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="day1">
+  <h2><span lang="ko">1일차 · 서부</span><span lang="en">Day 1 · West</span><span class="date"><span lang="ko">11.25(수)</span><span lang="en">Wed, Nov 25</span></span></h2>
+  <ol class="day">
+    <li><time>07:00</time><div><span lang="ko">쉐턱관 앞 집결, 버스로 대구공항 이동</span><span lang="en">Meet in front of Shattuck Hall (쉐턱관), bus to Daegu Airport</span></div></li>
+    <li><time>08:55</time><div><span lang="ko">대구공항 출발 → 10:05 제주공항 도착</span><span lang="en">Depart Daegu → arrive Jeju 10:05</span></div></li>
+    <li><time>10:30</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">흑돼지두루치기</span><span lang="en">Stir-fried black pork (흑돼지두루치기)</span></div></li>
+    <li class="place"><time>11:30</time><div class="body"><img src="img/geumneung.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">금능으뜸해변</span><span lang="en">Geumneung Beach</span><small lang="ko">Geumneung Beach</small><small lang="en">금능으뜸해변</small></h3>
+      <p lang="ko">모래가 희고 물이 얕은 해변입니다. 바다 건너로 비양도가 보입니다.</p>
+      <p lang="en">White sand and shallow water, with Biyangdo island across the bay.</p></div></div></li>
+    <li class="place"><time></time><div class="body"><img src="img/horsepark.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">더마파크</span><span lang="en">The Horse Park</span><small lang="ko">The Horse Park</small><small lang="en">더마파크</small></h3>
+      <p lang="ko">제주 말과 기마 공연을 볼 수 있는 곳입니다. 제주는 700년 넘게 말을 길러 왔습니다.</p>
+      <p lang="en">Horse-riding shows with Jeju horses. The island has raised horses for over 700 years.</p></div></div></li>
+    <li class="place"><time></time><div class="body"><img src="img/sinchang.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">신창풍차해안도로</span><span lang="en">Sinchang Windmill Coastal Road</span><small lang="ko">Sinchang Windmill Coastal Road</small><small lang="en">신창풍차해안도로</small></h3>
+      <p lang="ko">바다 위에 풍력발전기가 줄지어 선 해안도로입니다. 해 질 무렵이 가장 좋습니다.</p>
+      <p lang="en">A coastal road with wind turbines standing in the sea. Best around sunset.</p></div></div></li>
+    <li class="place"><time></time><div class="body"><img src="img/suwolbong.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">수월봉 지질트레일 (엉알해안)</span><span lang="en">Suwolbong Geotrail (Eongal Coast)</span><small lang="ko">Suwolbong Geotrail</small><small lang="en">수월봉 지질트레일</small></h3>
+      <p lang="ko">약 1만 8천 년 전 화산 폭발로 쌓인 화산재 지층이 절벽에 그대로 드러나 있습니다.</p>
+      <p lang="en">The cliffs show layers of volcanic ash from an eruption about 18,000 years ago.</p>
+      <div class="geo"><span lang="ko">유네스코 세계지질공원</span><span lang="en">UNESCO Global Geopark</span></div></div></div></li>
+    <li><time>18:00</time><div class="meal"><b><span lang="ko">저녁</span><span lang="en">Dinner</span></b> · <span lang="ko">샤브샤브, 월남쌈</span><span lang="en">Shabu-shabu and rice-paper wraps</span> · <span lang="ko">19:30 숙소 도착</span><span lang="en">hotel by 19:30</span></div></li>
+  </ol>
+</section>
+
+<section id="day2">
+  <h2><span lang="ko">2일차 · 동부</span><span lang="en">Day 2 · East</span><span class="date"><span lang="ko">11.26(목)</span><span lang="en">Thu, Nov 26</span></span></h2>
+  <ol class="day">
+    <li><time>08:00</time><div><span lang="ko">호텔 조식, 09:00 출발</span><span lang="en">Breakfast at the hotel, leave at 09:00</span></div></li>
+    <li class="place"><time>09:00</time><div class="body"><img src="img/yongnuni.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">용눈이오름</span><span lang="en">Yongnuni Oreum</span><small lang="ko">Yongnuni Oreum</small><small lang="en">용눈이오름</small></h3>
+      <p lang="ko">제주에는 '오름'이라 부르는 작은 화산이 368개 있습니다. 용눈이오름은 능선이 완만해 30분 정도면 걸을 수 있습니다.</p>
+      <p lang="en">Jeju has 368 small volcanic cones called oreum. This one has gentle ridges and takes about 30 minutes to walk.</p></div></div></li>
+    <li class="place"><time></time><div class="body"><img src="img/gwangchigi.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">광치기해변</span><span lang="en">Gwangchigi Beach</span><small lang="ko">Gwangchigi Beach</small><small lang="en">광치기해변</small></h3>
+      <p lang="ko">썰물 때 검은 용암 바위와 초록 이끼가 드러납니다. 정면에 성산일출봉이 보입니다.</p>
+      <p lang="en">At low tide, black lava rock and green moss appear. Seongsan Ilchulbong stands right in front.</p>
+      <div class="geo"><span lang="ko">성산일출봉: 유네스코 세계자연유산</span><span lang="en">Seongsan Ilchulbong: UNESCO World Natural Heritage</span></div></div></div></li>
+    <li><time>13:00</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">갈치조림</span><span lang="en">Braised cutlassfish (갈치조림)</span></div></li>
+    <li class="place"><time>14:00</time><div class="body"><img src="img/ilchulland.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">일출랜드</span><span lang="en">Ilchul Land</span><small lang="ko">Ilchul Land</small><small lang="en">일출랜드</small></h3>
+      <p lang="ko">용암동굴인 미천굴을 중심으로 꾸민 정원입니다. 동굴 안을 직접 걸어볼 수 있습니다.</p>
+      <p lang="en">Gardens around Micheon Cave, a lava tube you can walk through.</p></div></div></li>
+    <li class="place"><time></time><div class="body"><img src="img/market.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">서귀포 매일올레시장</span><span lang="en">Seogwipo Maeil Olle Market</span><small lang="ko">Maeil Olle Market</small><small lang="en">매일올레시장</small></h3>
+      <p lang="ko">서귀포에서 가장 큰 전통시장입니다. 길거리 음식, 감귤 간식, 기념품을 살 수 있습니다.</p>
+      <p lang="en">Seogwipo's largest traditional market. Street food, tangerine snacks and souvenirs.</p>
+      <div class="cap"><span lang="ko">사진: 시장 바로 옆 이중섭거리</span><span lang="en">Photo: Lee Jung-seob Street, next to the market</span></div></div></div></li>
+    <li><time>18:00</time><div class="meal"><b><span lang="ko">저녁</span><span lang="en">Dinner</span></b> · <span lang="ko">흑돼지구이</span><span lang="en">Grilled black pork (흑돼지구이)</span></div></li>
+  </ol>
+</section>
+
+<section id="day3">
+  <h2><span lang="ko">3일차 · 남부</span><span lang="en">Day 3 · South</span><span class="date"><span lang="ko">11.27(금)</span><span lang="en">Fri, Nov 27</span></span></h2>
+  <ol class="day">
+    <li><time>08:00</time><div><span lang="ko">호텔 조식, 09:00 출발</span><span lang="en">Breakfast at the hotel, leave at 09:00</span></div></li>
+    <li class="place"><time>09:00</time><div class="body"><img src="img/hueree.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">휴애리 자연생활공원</span><span lang="en">Hueree Natural Park</span><small lang="ko">Hueree Natural Park</small><small lang="en">휴애리</small></h3>
+      <p lang="ko">11월 말은 감귤 수확철입니다. 귤을 직접 따서 맛볼 수 있습니다.</p>
+      <p lang="en">Late November is tangerine harvest season. You will pick and taste them yourself.</p>
+      <div class="geo"><span lang="ko">감귤따기 체험</span><span lang="en">Tangerine picking</span></div></div></div></li>
+    <li class="place"><time></time><div class="body"><img src="img/yongmeori.webp" alt="" loading="lazy"><div>
+      <h3><span lang="ko">용머리해안</span><span lang="en">Yongmeori Coast</span><small lang="ko">Yongmeori Coast</small><small lang="en">용머리해안</small></h3>
+      <p lang="ko">산방산 아래, 용의 머리를 닮은 사암 절벽입니다. 물때와 파도에 따라 입장이 통제될 수 있습니다.</p>
+      <p lang="en">Sandstone cliffs below Sanbangsan, shaped like a dragon's head. Entry depends on the tide and waves.</p>
+      <div class="geo"><span lang="ko">유네스코 세계지질공원</span><span lang="en">UNESCO Global Geopark</span></div></div></div></li>
+    <li><time>13:00</time><div class="meal"><b><span lang="ko">점심</span><span lang="en">Lunch</span></b> · <span lang="ko">보말칼국수, 수육</span><span lang="en">Sea-snail noodle soup and boiled pork</span></div></li>
+    <li><time>16:30</time><div><span lang="ko">제주공항 도착, 탑승 수속</span><span lang="en">Check in at Jeju Airport</span></div></li>
+    <li><time>17:40</time><div><span lang="ko">제주공항 출발 → 18:50 대구공항 도착</span><span lang="en">Depart Jeju → arrive Daegu 18:50</span></div></li>
+    <li><time>19:50</time><div><span lang="ko">쉐턱관 도착 후 해산</span><span lang="en">Arrive at Shattuck Hall, trip ends</span></div></li>
+  </ol>
+  <p class="notice"><span lang="ko">현지 날씨와 사정에 따라 일정이 바뀔 수 있습니다.</span><span lang="en">The schedule may change with the weather on the day.</span></p>
+</section>
+
+<section id="videos">
+  <h2><span lang="ko">미리 보기</span><span lang="en">Before you go</span></h2>
+  <div class="videos">
+    <a href="https://www.youtube.com/watch?v=R-t4oCm-szQ" target="_blank" rel="noopener"><img src="img/yt-R-t4oCm-szQ.jpg" alt="" loading="lazy"><span>Together JEJU: Jeju Island, South Korea</span><em>YouTube · Visit Jeju</em></a>
+    <a href="https://www.youtube.com/watch?v=0y_0QQtrJSo" target="_blank" rel="noopener"><img src="img/yt-0y_0QQtrJSo.jpg" alt="" loading="lazy"><span><span lang="ko">제주 세계지질공원</span><span lang="en">Jeju UNESCO Global Geopark</span></span><em>YouTube · Visit Jeju</em></a>
+    <a href="https://www.youtube.com/watch?v=jKthIQ5IIWs" target="_blank" rel="noopener"><img src="img/yt-jKthIQ5IIWs.jpg" alt="" loading="lazy"><span>World Natural Heritage Jeju Center</span><em>YouTube · Visit Jeju</em></a>
+  </div>
+</section>
+
+<section id="tips">
+  <h2><span lang="ko">준비물과 연락처</span><span lang="en">Packing and contacts</span></h2>
+  <div class="tips">
+    <div><h3><span lang="ko">날씨·준비물</span><span lang="en">Weather and packing</span></h3>
+      <ul lang="ko"><li>11월 말 기온 8–16°C, 해안은 바람이 강함</li><li>바람막이 되는 따뜻한 겉옷, 모자</li><li>미끄럽지 않은 운동화 (바위 해안, 오름)</li><li>신분증 (여권 또는 외국인등록증)</li><li>보조배터리, 작은 우산</li></ul>
+      <ul lang="en"><li>Late November: 8–16°C, strong wind on the coast</li><li>Warm windproof jacket and a hat</li><li>Shoes with good grip (rocky coast, hill walk)</li><li>ID for the flight: passport or ARC</li><li>Power bank and a small umbrella</li></ul></div>
+    <div><h3><span lang="ko">식사·건강</span><span lang="en">Food and health</span></h3>
+      <ul lang="ko"><li>돼지고기가 들어간 식사가 있습니다. 할랄 등 식단 요청은 <b>출발 전</b> 인솔자에게 알려 주세요</li><li>알레르기나 복용 중인 약도 미리 알려 주세요</li></ul>
+      <ul lang="en"><li>Some meals include pork. Tell the leader <b>before departure</b> if you need halal or other food</li><li>Tell the leader about allergies or medicine you take</li></ul></div>
+    <div><h3><span lang="ko">연락처</span><span lang="en">Contacts</span></h3>
+      <ul><li><span lang="ko">인솔: 국제협력지원팀 강지현</span><span lang="en">Leader: Kang Ji-hyun, International Cooperation Team</span><br><span class="num">053-589-7886</span></li>
+      <li><span lang="ko">여행사: ㈜제주행운여행사</span><span lang="en">Travel agency: Jeju Haengun Travel</span><br><span class="num">064-746-0045</span></li>
+      <li><span lang="ko">경찰</span><span lang="en">Police</span> <span class="num">112</span> · <span lang="ko">구급·화재</span><span lang="en">Ambulance/Fire</span> <span class="num">119</span></li>
+      <li><span lang="ko">관광통역안내 (영어·말레이어·인도네시아어)</span><span lang="en">Korea Travel Hotline (English, Malay, Indonesian)</span> <span class="num">1330</span></li></ul></div>
+  </div>
+</section>
+
+</main>
+<footer class="wrap"><img src="img/kmcu-signature.png" alt="계명문화대학교 Keimyung College University"><div><span lang="ko">사진·영상 출처:</span><span lang="en">Photos and videos:</span> <a href="https://www.visitjeju.net" target="_blank" rel="noopener">Visit Jeju</a>, <a href="https://ijto.or.kr/korean/" target="_blank" rel="noopener"><span lang="ko">제주관광공사</span><span lang="en">Jeju Tourism Organization</span></a> · <span lang="ko">계명문화대학교 국제협력지원팀</span><span lang="en">Keimyung College University, International Cooperation Team</span></div></footer>
+
+<script>
+const root = document.documentElement;
+const themeBtn = document.getElementById('theme-btn');
+const load = k => { try { return localStorage.getItem(k) } catch (e) { return null } };
+const save = (k, v) => { try { localStorage.setItem(k, v) } catch (e) {} };
+const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+
+function paintThemeBtn() {
+  const ko = root.dataset.lang === 'ko';
+  themeBtn.textContent = isDark() ? (ko ? '라이트 모드' : 'Light') : (ko ? '다크 모드' : 'Dark');
+}
+function setLang(l) {
+  root.dataset.lang = l; root.lang = l; save('lang', l);
+  document.querySelectorAll('[data-set-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.setLang === l));
+  paintThemeBtn();
+}
+document.querySelectorAll('[data-set-lang]').forEach(b => b.onclick = () => setLang(b.dataset.setLang));
+themeBtn.onclick = () => { root.dataset.theme = isDark() ? 'light' : 'dark'; save('theme', root.dataset.theme); paintThemeBtn(); };
+
+const savedTheme = load('theme');
+if (savedTheme) root.dataset.theme = savedTheme;
+setLang(load('lang') || (navigator.language.startsWith('ko') ? 'ko' : 'en'));
+</script>
+
+</body>
+</html>
